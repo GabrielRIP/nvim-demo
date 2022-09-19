@@ -15,13 +15,13 @@ add_cmd("BufNewFile", {
 })
 
 -- Para formatear el archivo al guardar
--- add_cmd('BufWritePre', {
---    pattern = {
---       '*.json', '*.js', '*.jsx', '*.ts', '*.tsx', '*.lua', '*.vim', '*.md',
---       '*.svelte'
---    },
---    command = 'lua vim.lsp.buf.formatting()'
--- })
+add_cmd('BufWritePre', {
+   pattern = {
+      '*.json', '*.js', '*.jsx', '*.ts', '*.tsx', '*.lua', '*.vim', '*.md',
+      '*.svelte'
+   },
+   command = 'lua vim.lsp.buf.format()'
+})
 
 local augroups = {}
 

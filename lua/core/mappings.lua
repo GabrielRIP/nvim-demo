@@ -10,7 +10,7 @@ map('i', '<C-s>', '<ESC> :w<CR>', silent)
 map('n', 'Q', ':q<CR>', silent)
 
 -- llamar al archivo de configuracion
-map('n', '<Leader>/', '<cmd>e $MYVIMRC<CR>', silent)
+-- map('n', '<Leader>/', '<cmd>e $MYVIMRC<CR>', silent)
 
 -- Moverse entre ventanas como en 'Tmux'
 map('n', '<C-h>', '<C-w>h', silent)
@@ -76,7 +76,7 @@ map('n', 'm', ':nohl<CR>', opts)
 
 -- Encontrar palabra/archivo en el proyecto
 map('n', '<Leader>pf',
-  "<CMD>lua require('plugins.telescope').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>")
+   "<CMD>lua require('plugins.telescope').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>")
 map('n', '<Leader>pw', "<CMD>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })<CR>")
 
 -- Git
@@ -132,9 +132,9 @@ map('x', 'ga', '<Plug>(EasyAlign)', silent)
 
 -- Enlaces abiertos bajo cursor en el navegador con gx
 if vim.fn.has('macunix') == 1 then
-  map('n', 'gx', "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", silent)
+   map('n', 'gx', "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", silent)
 else
-  map('n', 'gx', "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", silent)
+   map('n', 'gx', "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", silent)
 end
 
 -- LSP

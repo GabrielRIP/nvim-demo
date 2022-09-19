@@ -28,7 +28,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (3) Themes
-      -- use { 'catppuccin/nvim', as = 'catppuccin' }
+      use { 'catppuccin/nvim', as = 'catppuccin' }
       -- +--------------------------------------------------------------------+
 
       -- ["nvim-treesitter/nvim-treesitter"] = {
@@ -94,17 +94,34 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (7) LSP Cmp
+
       use {
-         'hrsh7th/nvim-cmp',
-         event = 'InsertEnter',
-         config = function() require('configs.cmp_conf') end
+         "rafamadriz/friendly-snippets",
+         module = { "cmp", "cmp_nvim_lsp" },
+         event = "InsertEnter",
       }
-      use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
-      use { 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' }
-      use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
-      use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
-      use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
-      use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
+
+      use {
+         "hrsh7th/nvim-cmp",
+         after = "friendly-snippets",
+         config = function() require('configs.cmp_conf') end,
+      }
+
+      use {
+         "L3MON4D3/LuaSnip",
+         wants = "friendly-snippets",
+         after = "nvim-cmp",
+         config = function()
+            require("configs.others").luasnip()
+         end,
+      }
+
+      use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
+      use { "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }
+      use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }
+      use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }
+      use { "hrsh7th/cmp-path", after = "cmp-buffer" }
+
       -- use {
       --   'David-Kunz/cmp-npm',
       --   after = 'cmp-cmdline',
@@ -140,11 +157,18 @@ return require('packer').startup({
          event = 'BufWinEnter',
          config = function() require('configs.galaxyline') end
       }
+      use {
+         'GabrielRIP/bufferSplitSimple',
+         config = function()
+            require('buffer-split-simple').setup()
+         end
+      }
       -- +--------------------------------------------------------------------+
 
       -- (10) General
       use {
          'numToStr/Comment.nvim',
+         config = function() require('Comment').setup() end
          -- config = function() require('plugins.comment') end
       }
       -- use {
@@ -199,19 +223,20 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (11) Snippets & Language & Syntax
-      -- use {
-      --    'windwp/nvim-autopairs',
-      --    after = { 'nvim-treesitter', 'nvim-cmp' },
-      --    config = function() require('plugins.autopairs') end
-      -- }
+      use {
+         'windwp/nvim-autopairs',
+         after = { 'nvim-treesitter', 'nvim-cmp' },
+         config = function() require("nvim-autopairs").setup {} end
+         -- config = function() require('plugins.autopairs') end
+      }
       -- use {
       --    'windwp/nvim-ts-autotag',
       --    config = function() require('nvim-ts-autotag').setup() end
       -- }
       -- use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
       use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function() require('configs.indent') end
+         'lukas-reineke/indent-blankline.nvim',
+         config = function() require('configs.indent') end
       }
       use {
          'NvChad/nvim-colorizer.lua',
