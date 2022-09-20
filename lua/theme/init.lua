@@ -6,8 +6,9 @@ local colors = require('theme.colors')
 local highlights = {
    editor = require('theme.groups.editor').get(colors),
    syntax = require('theme.groups.syntax').get(colors),
-   gitsigns = require('theme.groups.integrations.gitsigns').get(colors),
+   git_signs = require('theme.groups.integrations.gitsigns').get(colors),
    nvimtree = require('theme.groups.integrations.nvimtree').get(colors),
+   indent = require('theme.groups.integrations.indent_blank').get(colors),
 }
 
 for _, element in pairs(highlights) do
@@ -15,8 +16,6 @@ for _, element in pairs(highlights) do
       vim.api.nvim_set_hl(0, group, hl)
    end
 end
---    for group, hl in pairs(highlights) do
---    end
 
 -- booleans = { 'bold' },
 -- comments = { 'italic', 'bold' },
@@ -82,9 +81,10 @@ end
 --    api_nvim_set(0, 'BufferVisibleMod', { bg = '#303030', fg = '#E2B55A' })
 --    -- +--------------------------------------------------------------------+
 --
---    -- barra de numeros
---    -- api_nvim_set(0, 'CursorLineNR', { fg = colors.first_color })
---    -- api_nvim_set(0, 'LineNr', { fg = '#606681' })
+-- barra de numeros
+-- vim.api.nvim_set_hl(0, 'CursorLineNR', { fg = #FFA630 })
+-- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#51576d' })
+
 --    -- api_nvim_set(0, 'CursorLine', { bg = '#5D6169'})
 --
 --
@@ -122,8 +122,3 @@ end
 --    }
 --
 --    api_nvim_set(0, "CmpBorderedWindow_FloatBorder", { fg = '#488DFF' })
---
---    for group, hl in pairs(highlights) do
---       api_nvim_set(0, group, hl)
---    end
--- end
