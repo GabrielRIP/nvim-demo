@@ -1,4 +1,5 @@
 local icons = require('iconos')
+local colors = require('theme.colors')
 
 User = {
    theme = {
@@ -24,6 +25,7 @@ User = {
       },
    },
    icons = icons,
+  colors = colors,
    statusline = {
       path_enabled = true,
       path = 'relative' -- absolute/relative

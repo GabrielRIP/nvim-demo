@@ -1,44 +1,48 @@
-vim.g.catppuccin_flavour = 'frappe'
-require("catppuccin").setup({
-   styles = {
-      booleans = { 'bold' },
-      comments = { 'bold' },
-      functions = { 'italic' },
-      variables = { 'bold' },
-      properties = { 'bold' },
-   },
-   transparent_background = true,
-   integrations = {
-      native_lsp = {
-         enabled = true,
-         virtual_text = {
-            errors = {},
-            hints = {},
-            warnings = {},
-            information = {},
-         },
-      },
-      barbar = true,
-      ts_rainbow = true,
-   }
-})
-vim.cmd [[colorscheme catppuccin]]
 -- -- ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┓
--- local api_nvim_set = vim.api.nvim_set_hl
+local colors = require('theme.colors')
 -- -- ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┛
+-- local for_plugins = require('theme.groups.integrations')
+
+local highlights = {
+   editor = require('theme.groups.editor').get(colors),
+   syntax = require('theme.groups.syntax').get(colors),
+   gitsigns = require('theme.groups.integrations.gitsigns').get(colors),
+   nvimtree = require('theme.groups.integrations.nvimtree').get(colors),
+}
+
+for _, element in pairs(highlights) do
+   for group, hl in pairs(element) do
+      vim.api.nvim_set_hl(0, group, hl)
+   end
+end
+--    for group, hl in pairs(highlights) do
+--    end
+
+-- booleans = { 'bold' },
+-- comments = { 'italic', 'bold' },
+-- functions = { 'italic' },
+-- variables = { 'bold' },
+-- properties = { 'bold' },
+-- Comment = { fg = colors.blue },
+-- -- TSConstBuiltin = { fg = colors.peach, style = {} },
+-- -- TSConstant = { fg = colors.sky },
+-- -- TSComment = { fg = colors.surface2, style = { "italic" } }
 --
--- -- Colores personalizablas
--- local colors = {
---    first_color     = '#FFA630',
---    second_color    = '#61AFEF',
---    tird_color      = '#488DFF',
---    fourth_color    = '#E86671',
---    fifth_color     = '#3EB050',
---    border_gray     = '#5C6370',
---    folder_icon     = '#DAA520',
---    folder_name     = '#DAA520',
---    text_commentary = '#7A809B',
--- }
+-- -- api_nvim_set(0, 'WinSeparator', { bg = "None", fg = "#16161e" });
+-- -- NvimTree
+-- NvimTreeVertSplit = { fg = colors.subtext0 },
+
+
+-- Floats/Windows
+--    api_nvim_set(0, 'NormalFloat', { bg = "None", fg = "None" });
+--    api_nvim_set(0, 'FloatBorder', { bg = "None", fg = "#488DFF" });
+--    api_nvim_set(0, 'WhichKeyFloat', { bg = "None", fg = "#488DFF" });
+--    api_nvim_set(0, 'BufferTabpageFill', { fg = "None" });
+-- hi_custom(0, 'WinSeparator', { bg = "None", fg = colors.subtext0 });
+--    api_nvim_set(0, 'BqfPreviewBorder', { link = 'FloatBorder' })
+
+
+
 --
 -- if vim.fn.has("nvim-0.8") then
 --    -- highlight Personalizados
@@ -83,13 +87,6 @@ vim.cmd [[colorscheme catppuccin]]
 --    -- api_nvim_set(0, 'LineNr', { fg = '#606681' })
 --    -- api_nvim_set(0, 'CursorLine', { bg = '#5D6169'})
 --
---    -- Floats/Windows
---    api_nvim_set(0, 'NormalFloat', { bg = "None", fg = "None" });
---    api_nvim_set(0, 'FloatBorder', { bg = "None", fg = "#488DFF" });
---    api_nvim_set(0, 'WhichKeyFloat', { bg = "None", fg = "#488DFF" });
---    api_nvim_set(0, 'BufferTabpageFill', { fg = "None" });
---    api_nvim_set(0, 'WinSeparator', { bg = "None", fg = "#16161e" });
---    api_nvim_set(0, 'BqfPreviewBorder', { link = 'FloatBorder' })
 --
 --    -- Telescope
 --    api_nvim_set(0, 'TelescopeTitle', { fg = colors.first_color });

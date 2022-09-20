@@ -50,31 +50,28 @@ local get_lsp_client = function(msg)
    end
 end
 
--- local color_base46 = require('base46').get_theme_tb('base_30')
-local colors_theme = require("catppuccin.palettes").get_palette()
-
 local colors = {
    bg         = '#1D2024';
-   bg_2       = colors_theme.mantle,
+   bg_2       = User.colors.mantle,
    text_dark  = '#181818',
    text_light = '#C5C5C5',
    text_lsp   = '#F2C260',
    text_blue  = '#51afef',
 
    giticon   = '#EF7028',
-   gitAdd    = colors_theme.green,
-   gitDelete = colors_theme.red,
-   gitChange = colors_theme.yellow,
+   gitAdd    = User.colors.green,
+   gitDelete = User.colors.red,
+   gitChange = User.colors.yellow,
 
    -- lspDiagError = '#F56E6E',
    -- lspDiagWarn  = '#E2B55A',
    -- lspDiagHint  = '#dc8ef3',
    -- lspDiagInfo  = '#4FC1FF',
 
-   lspDiagError = colors_theme.red,
-   lspDiagWarn  = colors_theme.yellow,
-   lspDiagHint  = colors_theme.teal,
-   lspDiagInfo  = colors_theme.sky,
+   lspDiagError = User.colors.red,
+   lspDiagWarn  = User.colors.yellow,
+   lspDiagHint  = User.colors.teal,
+   lspDiagInfo  = User.colors.sky,
 }
 
 local mode_map = {

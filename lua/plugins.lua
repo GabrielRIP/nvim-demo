@@ -28,7 +28,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (3) Themes
-      use { 'catppuccin/nvim', as = 'catppuccin' }
+      -- use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
       -- +--------------------------------------------------------------------+
 
       -- ["nvim-treesitter/nvim-treesitter"] = {
@@ -242,13 +242,8 @@ return require('packer').startup({
          'NvChad/nvim-colorizer.lua',
          config = function() require('configs.colorizer') end
       }
-      -- use { 'KabbAmine/vCoolor.vim' }
+      use { 'KabbAmine/vCoolor.vim' }
       -- use { 'potamides/pantran.nvim' } -- traductor
-      -- use {
-      --    'L3MON4D3/LuaSnip',
-      --    requires = { 'rafamadriz/friendly-snippets' },
-      --    after = 'cmp_luasnip'
-      -- }
       -- +--------------------------------------------------------------------+
 
       -- (12) Git
