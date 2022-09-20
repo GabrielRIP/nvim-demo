@@ -1,12 +1,12 @@
 -- -- ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┓
 local colors = require('theme.colors')
 -- -- ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┛
--- local for_plugins = require('theme.groups.integrations')
 
 local highlights = {
    editor = require('theme.groups.editor').get(colors),
    syntax = require('theme.groups.syntax').get(colors),
    git_signs = require('theme.groups.integrations.gitsigns').get(colors),
+   barbar = require('theme.groups.integrations.barbar').get(colors),
    nvimtree = require('theme.groups.integrations.nvimtree').get(colors),
    indent = require('theme.groups.integrations.indent_blank').get(colors),
 }
@@ -42,27 +42,12 @@ end
 
 
 
---
--- if vim.fn.has("nvim-0.8") then
 --    -- highlight Personalizados
 --    api_nvim_set(0, 'FirstColor', { fg = colors.first_color })
 --    api_nvim_set(0, 'SecondColor', { fg = colors.second_color });
 --    api_nvim_set(0, 'FourthColor', { fg = colors.fourth_color });
 --    api_nvim_set(0, 'FifthColor', { fg = colors.fifth_color })
---    -- +--------------------------------------------------------------------+
 --
---    -- ┌                                                                    ┐
---    -- │                             NvimTree:                              │
---    -- │    Color de la barra de Titulo, folder_root, icono de folders,     │
---    -- │    nombre del folder abierto, folder cerrado y los indentados,     │
---    -- │                  tambien el separador de ventana                   │
---    -- └                                                                    ┘
---    api_nvim_set(0, 'BufferOffset', { fg = colors.first_color });
---    vim.cmd('highlight NvimTreeRootFolder guifg=' .. colors.fourth_color .. ' guibg=' .. '#DDD9D6')
---    vim.cmd('highlight NvimTreeFolderIcon guifg=' .. colors.folder_icon)
---    vim.cmd('highlight NvimTreeOpenedFolderName guifg=' .. colors.folder_name)
---    vim.cmd('highlight NvimTreeIndentMarker guifg=' .. '#464B5E')
---    api_nvim_set(0, 'VertSplit', { bg = "None", fg = "#16161e" });
 --    -- +--------------------------------------------------------------------+
 --    -- para el plugin barbar
 --    api_nvim_set(0, 'BufferCurrent', { bg = '#1D2024', fg = '#ffffff' })
@@ -80,13 +65,6 @@ end
 --    api_nvim_set(0, 'BufferInactiveSign', { bg = '#303030' })
 --    api_nvim_set(0, 'BufferVisibleMod', { bg = '#303030', fg = '#E2B55A' })
 --    -- +--------------------------------------------------------------------+
---
--- barra de numeros
--- vim.api.nvim_set_hl(0, 'CursorLineNR', { fg = #FFA630 })
--- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#51576d' })
-
---    -- api_nvim_set(0, 'CursorLine', { bg = '#5D6169'})
---
 --
 --    -- Telescope
 --    api_nvim_set(0, 'TelescopeTitle', { fg = colors.first_color });
@@ -120,5 +98,4 @@ end
 --       CmpItemAbbrMatch      = { fg = '#61AFEF', bg = "NONE" },
 --       CmpItemAbbrMatchFuzzy = { fg = '#61AFEF', bg = "NONE" },
 --    }
---
 --    api_nvim_set(0, "CmpBorderedWindow_FloatBorder", { fg = '#488DFF' })
