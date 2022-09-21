@@ -2,22 +2,21 @@ local M = {}
 
 function M.get(cp)
    return {
-      -- Comment = { fg = cp.surface2, style = cnf.styles.comments }, -- just comments
-      Constant = { fg = cp.peach }, -- (preferred) any constant
-      String = { fg = cp.green, italic = true }, -- a string constant: "this is a string"
-      Character = { fg = cp.teal }, --  a character constant: 'c', '\n'
-      Number = { fg = cp.peach }, --   a number constant: 234, 0xff
-      Float = { fg = cp.peach }, --    a floating point constant: 2.3e10
-      Boolean = { fg = cp.peach }, --  a boolean constant: TRUE, false
-      -- Identifier = { fg = cp.flamingo, style = cnf.styles.variables }, -- (preferred) any variable name
-      Function = { fg = cp.blue, italic = true }, -- function name (also: methods for classes)
-      Statement = { fg = cp.mauve }, -- (preferred) any statement
+      Constant    = { fg = cp.peach }, -- (preferred) any constant
+      String      = { fg = cp.green }, -- a string constant: "this is a string"
+      Character   = { fg = cp.teal }, --  a character constant: 'c', '\n'
+      Number      = { fg = cp.peach }, --   a number constant: 234, 0xff
+      Float       = { fg = cp.peach }, --    a floating point constant: 2.3e10
+      Boolean     = { fg = cp.red_2, bold = true, italic = true }, --  a boolean constant: TRUE, false
+      Identifier  = { fg = cp.teal_2 }, -- (preferred) any variable name
+      Function    = { fg = cp.blue_1, italic = true, bold = true }, -- function name (also: methods for classes) Statement = { fg = cp.mauve }, -- (preferred) any statement
+      Statement   = { fg = cp.red }, -- (preferred) any statement, tags html
       Conditional = { fg = cp.red }, --  if, then, else, endif, switch, etcp.
-      Repeat = { fg = cp.red }, --   for, do, while, etcp.
-      Label = { fg = cp.peach }, --    case, default, etcp.
-      Operator = { fg = cp.sky }, -- "sizeof", "+", "*", etcp.
-      Keyword = { fg = cp.pink, bold = true }, --  any other keyword
-      -- Exception     = { }, --  try, catch, throw
+      Repeat      = { fg = cp.red }, --   for, do, while, etcp.
+      Label       = { fg = cp.peach }, --    case, default, etcp.
+      Operator    = { fg = cp.sky }, -- "sizeof", "+", "*", etcp.
+      Keyword     = { fg = cp.pink_2 }, --  any other keyword
+      -- Exception   = {}, --  try, catch, throw
 
       PreProc = { fg = cp.pink }, -- (preferred) generic Preprocessor
       Include = { fg = cp.pink }, --  preprocessor #include
@@ -25,21 +24,20 @@ function M.get(cp)
       -- Macro         = { }, --    same as Define
       -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etcp.
 
-      StorageClass = { fg = cp.yellow }, -- static, register, volatile, etcp.
+      StorageClass = { fg = cp.teal_2 }, -- static, register, volatile, css
       Structure = { fg = cp.yellow }, --  struct, union, enum, etcp.
       Typedef = { fg = cp.yellow }, --  A typedef
       Special = { fg = cp.pink }, -- (preferred) any special symbol
-      Type = { fg = cp.blue }, -- (preferred) int, long, char, etcp.
+      Type = { fg = cp.yellow_2 }, -- (preferred) int, long, char, etcp.
       -- SpecialChar   = { }, --  special character in a constant
       -- Tag           = { }, --    you can use CTRL-] on this
       -- Delimiter     = { }, --  character that needs attention
       -- Specialoverlay0= { }, -- special things inside a overlay0
       -- Debug         = { }, --    debugging statements
 
-      -- Underlined = { style = { "underline" } }, -- (preferred) text that stands out, HTML links
-      -- Bold = { style = { "bold" } },
-      -- Italic = { style = { "italic" } },
-
+      Underlined = { underline = true }, -- (preferred) text that stands out, HTML links
+      Bold = { bold = true },
+      Italic = { italic = true },
       -- ("Ignore", below, may be invisible...)
       -- Ignore = { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
@@ -47,14 +45,14 @@ function M.get(cp)
       Todo = { bg = cp.yellow, fg = cp.base, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
       qfLineNr = { fg = cp.yellow },
       qfFileName = { fg = cp.blue },
-      -- htmlH1 = { fg = cp.pink, style = { "bold" } },
-      -- htmlH2 = { fg = cp.blue, style = { "bold" } },
+      htmlH1 = { fg = cp.pink, bold = true },
+      htmlH2 = { fg = cp.blue, bold = true },
       -- mkdHeading = { fg = cp.peach, style = { "bold" } },
       -- mkdCode = { bg = cp.terminal_black, fg = cp.text },
       mkdCodeDelimiter = { bg = cp.base, fg = cp.text },
-      -- mkdCodeStart = { fg = cp.flamingo, style = { "bold" } },
-      -- mkdCodeEnd = { fg = cp.flamingo, style = { "bold" } },
-      -- mkdLink = { fg = cp.blue, style = { "underline" } },
+      mkdCodeStart = { fg = cp.flamingo, bold = true },
+      mkdCodeEnd = { fg = cp.flamingo, bold = true },
+      -- mkdLink = { fg = cp.blue, underline = true },
 
       -- debugging
       debugPC = { bg = cp.crust }, -- used for highlighting the current line in terminal-debug
@@ -71,10 +69,10 @@ function M.get(cp)
       diffFile = { fg = cp.blue },
       diffLine = { fg = cp.overlay0 },
       diffIndexLine = { fg = cp.teal },
-      -- DiffAdd = { bg = ucolors.darken(cp.green, 0.18, cp.base) }, -- diff mode: Added line |diff.txt|
-      -- DiffChange = { bg = ucolors.darken(cp.blue, 0.07, cp.base) }, -- diff mode: Changed line |diff.txt|
-      -- DiffDelete = { bg = ucolors.darken(cp.red, 0.18, cp.base) }, -- diff mode: Deleted line |diff.txt|
-      -- DiffText = { bg = ucolors.darken(cp.blue, 0.18, cp.base) }, -- diff mode: Changed text within a changed line |diff.txt|
+      DiffAdd = { fg = cp.green, bg = cp.base }, -- diff mode: Added line |diff.txt|
+      DiffChange = { fg = cp.blue, bg = cp.base }, -- diff mode: Changed line |diff.txt|
+      DiffDelete = { fg = cp.red, bg = cp.base }, -- diff mode: Deleted line |diff.txt|
+      DiffText = { fg = cp.blue, bg = cp.base }, -- diff mode: Changed text within a changed line |diff.txt|
       -- NeoVim
       healthError = { fg = cp.red },
       healthSuccess = { fg = cp.teal },
@@ -90,15 +88,15 @@ function M.get(cp)
       GlyphPalette7 = { fg = cp.text },
       GlyphPalette9 = { fg = cp.red },
 
-      -- Define = { link = "PreProc" }, -- preprocessor #define
-      -- Macro = { link = "PreProc" }, -- same as Define
-      -- PreCondit = { link = "PreProc" }, -- preprocessor #if, #else, #endif, etc.
-      --
-      -- SpecialChar = { link = "Special" }, -- special character in a constant
-      -- Tag = { link = "Special" }, -- you can use CTRL-] on this
-      -- Delimiter = { link = "Special" }, -- character that needs attention
-      -- SpecialComment = { link = "Special" }, -- special things inside a comment
-      -- Debug = { link = "Special" }, -- debugging statements
+      Define = { link = "PreProc" }, -- preprocessor #define
+      Macro = { link = "PreProc" }, -- same as Define
+      PreCondit = { link = "PreProc" }, -- preprocessor #if, #else, #endif, etc.
+
+      SpecialChar = { link = "Special" }, -- special character in a constant
+      Tag = { link = "Special" }, -- you can use CTRL-] on this
+      Delimiter = { link = "Special" }, -- character that needs attention
+      SpecialComment = { link = "Special" }, -- special things inside a comment
+      Debug = { link = "Special" }, -- debugging statements
    }
 end
 
