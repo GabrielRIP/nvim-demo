@@ -31,11 +31,12 @@ end
 local options = {
    window = {
       completion = {
-         border = border "CmpBorder",
+         border = border('FloatBorder'),
          winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
       },
       documentation = {
-         border = border "CmpDocBorder",
+         border = border('FloatBorder'),
+         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder"
       },
    },
    snippet = {
@@ -93,6 +94,7 @@ local options = {
       { name = "nvim_lua" },
       { name = "path" },
    },
+   experimental = { ghost_text = true },
 }
 
 cmp.setup(options)

@@ -9,6 +9,7 @@ local highlights = {
    barbar = require('theme.groups.integrations.barbar').get(colors),
    nvimtree = require('theme.groups.integrations.nvimtree').get(colors),
    indent = require('theme.groups.integrations.indent_blank').get(colors),
+   cmp = require('theme.groups.integrations.cmp').get(colors),
 }
 
 for _, element in pairs(highlights) do

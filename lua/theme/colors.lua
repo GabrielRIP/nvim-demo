@@ -1,6 +1,4 @@
 return {
-   border = '#488DFF',
-
    folder      = '#DAA520',
    rosewater   = '#F2D5CF',
    flamingo    = '#EEBEBE',
@@ -25,6 +23,7 @@ return {
    blue        = '#8CAAEE',
    blue_1      = '#51afef',
    blue_2      = '#48a6e6',
+   blue_3      = '#488DFF',
    orange_1    = '#FFA630',
    orange_2    = '#ea9558',
    purple      = '#dc8ef3',

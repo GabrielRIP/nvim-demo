@@ -35,10 +35,10 @@ function M.get(cp)
       Normal = { fg = cp.text, bg = cp.base }, -- normal text
       NormalNC = { fg = cp.text, bg = cp.base }, -- normal text in non-current windows
       NormalSB = { fg = cp.text, bg = cp.crust }, -- normal text in non-current windows
-      NormalFloat = { fg = cp.text, bg = cp.mantle }, -- Normal text in floating windows.
-      FloatBorder = { fg = cp.blue },
+      NormalFloat = { fg = cp.text, bg = cp.base }, -- Normal text in floating windows.
+      FloatBorder = { fg = cp.blue_2 },
       Pmenu = { bg = cp.surface0, fg = cp.overlay2 }, -- Popup menu: normal item.
-      PmenuSel = { fg = cp.text, bg = cp.surface1, bold = true }, -- Popup menu: selected item.
+      PmenuSel = { fg = cp.base, bg = cp.teal, bold = true }, -- Popup menu: selected item.
       PmenuSbar = { bg = cp.surface1 }, -- Popup menu: scrollbar.
       PmenuThumb = { bg = cp.overlay0 }, -- Popup menu: Thumb of the scrollbar.
       Question = { fg = cp.blue }, -- |hit-enter| prompt and yes/no questions
