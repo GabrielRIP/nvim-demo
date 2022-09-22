@@ -89,7 +89,10 @@ return require('packer').startup({
       -- (6) LSP Base
       use { 'williamboman/mason.nvim' }
       use { 'williamboman/mason-lspconfig.nvim' }
-      use { 'neovim/nvim-lspconfig' }
+      use {
+         'neovim/nvim-lspconfig',
+         config = function() require('lsp') end
+      }
 
       -- +--------------------------------------------------------------------+
 

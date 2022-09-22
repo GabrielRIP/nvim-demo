@@ -1,1 +1,1 @@
-require('custom.gradual_undo').setup()
+-- require('custom.gradual_undo').setup()
