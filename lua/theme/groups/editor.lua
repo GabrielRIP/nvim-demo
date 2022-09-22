@@ -38,7 +38,7 @@ function M.get(cp)
       NormalFloat = { fg = cp.text, bg = cp.base }, -- Normal text in floating windows.
       FloatBorder = { fg = cp.blue_2 },
       Pmenu = { bg = cp.surface0, fg = cp.overlay2 }, -- Popup menu: normal item.
-      PmenuSel = { fg = cp.base, bg = cp.teal, bold = true }, -- Popup menu: selected item.
+      PmenuSel = { fg = cp.dark, bg = cp.teal, bold = true }, -- Popup menu: selected item.
       PmenuSbar = { bg = cp.surface1 }, -- Popup menu: scrollbar.
       PmenuThumb = { bg = cp.overlay0 }, -- Popup menu: Thumb of the scrollbar.
       Question = { fg = cp.blue }, -- |hit-enter| prompt and yes/no questions

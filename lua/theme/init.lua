@@ -20,14 +20,7 @@ for _, element in pairs(highlights) do
 end
 
 -- highlight Personalizados
--- api_nvim_set(0, 'FirstColor', { fg = colors.first_color })
--- api_nvim_set(0, 'SecondColor', { fg = colors.second_color });
--- api_nvim_set(0, 'FourthColor', { fg = colors.fourth_color });
--- api_nvim_set(0, 'FifthColor', { fg = colors.fifth_color })
-
--- +--------------------------------------------------------------------+
--- Telescope
--- api_nvim_set(0, 'TelescopeTitle', { fg = colors.first_color });
--- api_nvim_set(0, 'TelescopeNormal', { bg = "None", fg = "None" });
--- api_nvim_set(0, 'TelescopeBorder', { bg = "None", fg = "#488DFF" });
--- api_nvim_set(0, 'TelescopeMatching', { link = 'Constant' });
+vim.api.nvim_set_hl(0, 'FirstColor', { fg = colors.orange_1 })
+vim.api.nvim_set_hl(0, 'SecondColor', { fg = colors.blue_2 });
+vim.api.nvim_set_hl(0, 'FourthColor', { fg = colors.red_2 });
+vim.api.nvim_set_hl(0, 'FifthColor', { fg = colors.teal_2 })

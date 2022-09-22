@@ -21,10 +21,10 @@ return require('packer').startup({
          'kyazdani42/nvim-web-devicons',
          config = function() require('configs.devicons') end
       }
-      -- use { -- Para la portada Inicial con las Opciones
-      --    'goolord/alpha-nvim',
-      --    config = function() require('plugins.alpha') end
-      -- }
+      use { -- Para la portada Inicial con las Opciones
+         'goolord/alpha-nvim',
+         config = function() require('configs.alpha') end
+      }
       -- +--------------------------------------------------------------------+
 
       -- (3) Themes
@@ -159,12 +159,6 @@ return require('packer').startup({
          'ecosse3/galaxyline.nvim',
          event = 'BufWinEnter',
          config = function() require('configs.galaxyline') end
-      }
-      use {
-         'GabrielRIP/bufferSplitSimple',
-         config = function()
-            require('buffer-split-simple').setup()
-         end
       }
       -- +--------------------------------------------------------------------+
 
