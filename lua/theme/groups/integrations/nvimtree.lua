@@ -17,7 +17,7 @@ function M.get(cp)
       NvimTreeGitNew = { fg = cp.blue },
       NvimTreeGitDeleted = { fg = cp.red },
 
-      NvimTreeSpecialFile = { fg = cp.green_1 },
+      NvimTreeSpecialFile = { fg = cp.teal_2 },
       NvimTreeImageFile = { fg = cp.text },
       NvimTreeOpenedFile = { fg = cp.blue_1 },
    }

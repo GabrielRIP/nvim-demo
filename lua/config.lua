@@ -1,7 +1,7 @@
 local icons = require('iconos')
 local colors = require('theme.colors')
 
-User = {
+_G.User = {
    theme = {
       transparency = false
    },
@@ -25,7 +25,7 @@ User = {
       },
    },
    icons = icons,
-  colors = colors,
+   colors = colors,
    statusline = {
       path_enabled = true,
       path = 'relative' -- absolute/relative
