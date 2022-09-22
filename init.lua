@@ -3,6 +3,7 @@ vim.defer_fn(function()
 end, 0)
 
 require('plugins')
+require('custom')
 require('config')
 require('core')
 require('theme')
