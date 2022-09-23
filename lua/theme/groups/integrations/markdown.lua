@@ -10,9 +10,9 @@ function M.get(cp)
       markdownListMarker = { fg = cp.teal, bold = true },
 
       -- for code and codeBlock
-      markdownCode = { fg = cp.blue_2 },
-      markdownCodeBlock = { fg = cp.blue_2 },
-      markdowncodeDelimiter = { fg = cp.teal, bold = true },
+      markdownCode = { fg = cp.whiteSmoke },
+      markdownCodeBlock = { fg = cp.whiteSmoke },
+      markdowncodeDelimiter = { fg = cp.blue_2, bold = true },
 
       -- for titles
       markdownHeadingDelimiter = { fg = cp.red, bold = true }, -- example: #, ##, ###...

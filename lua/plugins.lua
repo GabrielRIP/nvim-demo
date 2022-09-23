@@ -147,7 +147,7 @@ return require('packer').startup({
       --    config = function() require('plugins.gps') end,
       --    after = 'nvim-treesitter'
       -- }
-      -- use { 'jose-elias-alvarez/typescript.nvim' }
+      use { 'jose-elias-alvarez/typescript.nvim' }
       -- +--------------------------------------------------------------------+
 
       -- (9) Buffer and Bar state
@@ -240,6 +240,7 @@ return require('packer').startup({
          config = function() require('configs.colorizer') end
       }
       use { 'KabbAmine/vCoolor.vim' }
+      use { 'mrshmllow/document-color.nvim' }
       -- use { 'potamides/pantran.nvim' } -- traductor
       -- +--------------------------------------------------------------------+
 

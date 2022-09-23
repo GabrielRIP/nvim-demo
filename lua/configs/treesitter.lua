@@ -10,7 +10,7 @@ local options = {
 
    highlight = {
       enable = true,
-      disable = { 'md', 'html', 'css', 'scss' },
+      disable = { 'markdown', 'html', 'css', 'scss' },
       use_languagetree = true,
    },
 
