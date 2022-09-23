@@ -26,7 +26,7 @@ function M.get(cp)
       Folded = { fg = cp.blue, bg = cp.surface1 }, -- line used for closed folds
       FoldColumn = { fg = cp.overlay0 }, -- 'foldcolumn'
       Substitute = { bg = cp.white, fg = cp.pink_2 }, -- |:substitute| replacement text highlighting
-      MatchParen = { fg = cp.white, bg = cp.red, bold = true }, -- El caracter que conincide con la posicion de cursor { }, [], ()..
+      MatchParen = { fg = cp.white, bg = cp.blue_3, bold = true }, -- El caracter que conincide con la posicion de cursor { }, [], ()..
       ModeMsg = { fg = cp.text, bold = true }, -- 'showmode' message (e.g., "-- INSERT -- ")
       MsgArea = { fg = cp.text }, -- Area for messages and cmdline
       MsgSeparator = {}, -- Separator for scrolled messages, `msgsep` flag of 'display'

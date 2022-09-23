@@ -9,11 +9,13 @@ end
 
 return require('packer').startup({
    function(use)
+
       -- (1) Packer plugin manager
       use 'wbthomason/packer.nvim'
       -- +--------------------------------------------------------------------+
 
       -- (2) Necesarios para cargar primero
+
       use { 'lewis6991/impatient.nvim' }
       -- use { 'nathom/filetype.nvim' }
       use { 'nvim-lua/plenary.nvim' }
@@ -27,23 +29,8 @@ return require('packer').startup({
       }
       -- +--------------------------------------------------------------------+
 
-      -- (3) Themes
-      -- use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
-      -- +--------------------------------------------------------------------+
-
-      -- ["nvim-treesitter/nvim-treesitter"] = {
-      --   module = "nvim-treesitter",
-      --   setup = function()
-      --     require("core.lazy_load").on_file_open "nvim-treesitter"
-      --   end,
-      --   cmd = require("core.lazy_load").treesitter_cmds,
-      --   run = ":TSUpdate",
-      --   config = function()
-      --     require "plugins.configs.treesitter"
-      --   end,
-      -- },
-
       -- (4) Treesitter
+
       use {
          'nvim-treesitter/nvim-treesitter',
          config = function() require('configs.treesitter') end
@@ -63,6 +50,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (5) Navigating (Telescope/Tree/Refactor)
+
       -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
       -- use {
       --    'nvim-telescope/telescope.nvim',
@@ -87,6 +75,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (6) LSP Base
+
       use { 'williamboman/mason.nvim' }
       use { 'williamboman/mason-lspconfig.nvim' }
       use {
@@ -103,13 +92,11 @@ return require('packer').startup({
          module = { "cmp", "cmp_nvim_lsp" },
          event = "InsertEnter",
       }
-
       use {
          "hrsh7th/nvim-cmp",
          after = "friendly-snippets",
          config = function() require('configs.cmp_conf') end,
       }
-
       use {
          "L3MON4D3/LuaSnip",
          wants = "friendly-snippets",
@@ -118,39 +105,26 @@ return require('packer').startup({
             require("configs.others").luasnip()
          end,
       }
-
       use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
       use { "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }
       use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }
       use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }
       use { "hrsh7th/cmp-path", after = "cmp-buffer" }
-
-      -- use {
-      --   'David-Kunz/cmp-npm',
-      --   after = 'cmp-cmdline',
-      --   config = "require('plugins.cmp-npm')"
-      -- }
-      -- use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
       -- +--------------------------------------------------------------------+
 
       -- (8) LSP Addons
+
       -- use {
       --    'stevearc/dressing.nvim',
       --    requires = { 'MunifTanjim/nui.nvim' },
       --    config = function() require('plugins.dressing') end
       -- }
-      -- use { 'onsails/lspkind-nvim' }
       -- use { 'nvim-lua/popup.nvim' }
-      -- use {
-      --    'ChristianChiarulli/nvim-gps',
-      --    branch = 'text_hl',
-      --    config = function() require('plugins.gps') end,
-      --    after = 'nvim-treesitter'
-      -- }
       use { 'jose-elias-alvarez/typescript.nvim' }
       -- +--------------------------------------------------------------------+
 
       -- (9) Buffer and Bar state
+
       use { -- Buffer
          'romgrk/barbar.nvim',
          config = function() require('configs.barbar') end
@@ -163,6 +137,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (10) General
+
       use {
          'numToStr/Comment.nvim',
          config = function() require('Comment').setup() end
@@ -220,6 +195,7 @@ return require('packer').startup({
       -- +--------------------------------------------------------------------+
 
       -- (11) Snippets & Language & Syntax
+
       use {
          'windwp/nvim-autopairs',
          after = { 'nvim-treesitter', 'nvim-cmp' },
@@ -230,7 +206,7 @@ return require('packer').startup({
       --    'windwp/nvim-ts-autotag',
       --    config = function() require('nvim-ts-autotag').setup() end
       -- }
-      -- use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+      use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
       use {
          'lukas-reineke/indent-blankline.nvim',
          config = function() require('configs.indent') end
