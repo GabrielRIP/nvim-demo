@@ -6,7 +6,8 @@ function M.get(cp)
 
       CursorLineNR = { fg = cp.orange_1, bold = true },
       LineNr = { fg = cp.overlay1 },
-      CursorLine = { bg = cp.surface0 },
+      -- CursorLine = { bg = cp.surface0 },
+      CursorLine = { bg = 'None' },
       SignColumn = { fg = cp.surface1 }, -- column where |signs| are displayed
       SignColumnSB = { bg = cp.crust, fg = cp.surface1 }, -- column where |signs| are displayed
 
