@@ -14,7 +14,7 @@ function M.get(cp)
       DiagnosticVirtualTextError = { bg = 'None', fg = error },
       DiagnosticVirtualTextWarn = { bg = 'None', fg = warning },
       DiagnosticVirtualTextInfo = { bg = 'None', fg = info },
-      DiagnosticVirtualTextHint = { bg = 'None', fg = hint, },
+      DiagnosticVirtualTextHint = { bg = 'None', fg = hint },
 
       DiagnosticError = { bg = 'None', fg = error }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
       DiagnosticWarn = { bg = 'None', fg = warning }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
@@ -22,10 +22,10 @@ function M.get(cp)
       DiagnosticHint = { bg = 'None', fg = hint }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
 
       -- for nvim nightly
-      DiagnosticUnderlineError = { sp = error },
-      DiagnosticUnderlineWarn = { sp = warning },
-      DiagnosticUnderlineInfo = { sp = info },
-      DiagnosticUnderlineHint = { sp = hint },
+      DiagnosticUnderlineError = { sp = error, underline = true },
+      DiagnosticUnderlineWarn = { sp = warning, underline = true },
+      DiagnosticUnderlineInfo = { sp = info, underline = true },
+      DiagnosticUnderlineHint = { sp = hint, underline = true },
 
       LspDiagnosticsDefaultError = { fg = error }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
       LspDiagnosticsDefaultWarning = { fg = warning }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
