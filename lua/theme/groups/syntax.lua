@@ -5,9 +5,9 @@ function M.get(cp)
       Constant    = { fg = cp.peach }, -- (preferred) any constant
       String      = { fg = cp.green }, -- a string constant: "this is a string"
       Character   = { fg = cp.teal }, --  a character constant: 'c', '\n'
-      Number      = { fg = cp.peach }, --   a number constant: 234, 0xff
-      Float       = { fg = cp.peach }, --    a floating point constant: 2.3e10
-      Boolean     = { fg = cp.red_2, bold = true, italic = true }, --  a boolean constant: TRUE, false
+      Number      = { fg = cp.peach, bold = true }, --   a number constant: 234, 0xff
+      Float       = { fg = cp.peach, bold = true }, --    a floating point constant: 2.3e10
+      Boolean     = { fg = cp.red_2, bold = true }, --  a boolean constant: TRUE, false
       Identifier  = { fg = cp.teal_2 }, -- (preferred) any variable name
       Function    = { fg = cp.blue_1, italic = true, bold = true }, -- function name (also: methods for classes) Statement = { fg = cp.mauve }, -- (preferred) any statement
       Statement   = { fg = cp.red }, -- (preferred) any statement, tags html
@@ -45,8 +45,6 @@ function M.get(cp)
       Todo = { bg = cp.yellow, fg = cp.base, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
       qfLineNr = { fg = cp.yellow },
       qfFileName = { fg = cp.blue },
-      htmlH1 = { fg = cp.pink, bold = true },
-      htmlH2 = { fg = cp.blue, bold = true },
       -- mkdHeading = { fg = cp.peach, style = { "bold" } },
       -- mkdCode = { bg = cp.terminal_black, fg = cp.text },
       mkdCodeDelimiter = { bg = cp.base, fg = cp.text },
