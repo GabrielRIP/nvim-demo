@@ -32,8 +32,6 @@ function M.get(cp)
 
       markdownItalic = { fg = cp.peach, italic = true },
       markdownItalicDelimiter = { fg = cp.whiteSmoke, bold = true },
-
-
    }
 end
 
