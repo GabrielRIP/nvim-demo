@@ -167,3 +167,7 @@ map('n', '<leader>p', ':silent !npx prettier --write %<CR>')
 
 -- Toggle para MarkdownPreview
 map('n', '<leader>m', ':MarkdownPreview<CR>', silent)
+
+-- Para alternar el spell
+map('n', '<F11>', ':set spell!<CR>', silent)
+map('n', '<F11> <C-0>', ':set spell!<CR>', silent)

@@ -2,7 +2,6 @@ local opt = vim.opt
 local g = vim.g
 
 g.vim_version = vim.version().minor
-g.transparency = User.theme.transparency
 
 -- use filetype.lua instead of filetype.vim. it's enabled by default in neovim 0.8 (nightly)
 if g.vim_version < 8 then
@@ -30,19 +29,19 @@ opt.smartcase = true
 opt.mouse = 'a'
 
 -- Numbers
-opt.number = true
+opt.number      = true
 opt.numberwidth = 2
-opt.ruler = false
+opt.ruler       = false
 
 -- disable nvim intro
 opt.shortmess:append 'sI'
 
-opt.signcolumn = 'yes'
-opt.splitbelow = true
-opt.splitright = true
+opt.signcolumn    = 'yes'
+opt.splitbelow    = true
+opt.splitright    = true
 opt.termguicolors = true
-opt.timeoutlen = 400
-opt.undofile = true
+opt.timeoutlen    = 400
+opt.undofile      = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
@@ -51,15 +50,15 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append '<>[]hl'
 
-vim.opt.wrap = false
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-vim.opt.hidden = true
-vim.opt.writebackup = false
-vim.opt.pumheight = 10
--- vim.opt.spelllang    = 'es,cjk' -- Establecer el idioma del corrector ortografico, por defecto es en 'ingles'
--- vim.opt.spellsuggest = 'best,9' -- Muestra las 9 mejores opciones de correccion.
-vim.opt.inccommand = 'split'
+vim.opt.wrap         = false
+vim.opt.linebreak    = true
+vim.opt.breakindent  = true
+vim.opt.hidden       = true
+vim.opt.writebackup  = false
+vim.opt.pumheight    = 10
+vim.opt.spelllang    = { 'en', 'es', 'cjk' } -- Establecer idiomas en ese orden
+vim.opt.spellsuggest = 'best,9' -- Muestra las 9 mejores opciones de correccion.
+vim.opt.inccommand   = 'split' -- Muertra en un split como se reemplazan las palabras.
 
 g.mapleader = ' '
 
@@ -70,10 +69,12 @@ local default_plugins = {
    'getscriptPlugin',
    'gzip',
    'logipat',
-   'netrw',
-   'netrwPlugin',
-   'netrwSettings',
-   'netrwFileHandlers',
+
+   -- 'netrw', -- No permite que se descargue nuevo spell a español
+   -- 'netrwPlugin', -- No permite que se descargue nuevo spell a español
+   -- 'netrwSettings',
+   -- 'netrwFileHandlers',
+
    'matchit',
    'tar',
    'tarPlugin',
