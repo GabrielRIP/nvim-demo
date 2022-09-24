@@ -88,28 +88,29 @@ return require('packer').startup({
       -- (7) LSP Cmp
 
       use {
-         "rafamadriz/friendly-snippets",
-         module = { "cmp", "cmp_nvim_lsp" },
-         event = "InsertEnter",
+         'rafamadriz/friendly-snippets',
+         module = { 'cmp', 'cmp_nvim_lsp' },
+         event = 'InsertEnter',
       }
       use {
-         "hrsh7th/nvim-cmp",
-         after = "friendly-snippets",
+         'hrsh7th/nvim-cmp',
+         after = 'friendly-snippets',
          config = function() require('configs.cmp_conf') end,
       }
       use {
-         "L3MON4D3/LuaSnip",
-         wants = "friendly-snippets",
-         after = "nvim-cmp",
+         'L3MON4D3/LuaSnip',
+         wants = 'friendly-snippets',
+         after = 'nvim-cmp',
          config = function()
-            require("configs.others").luasnip()
+            require('configs.others').luasnip()
          end,
       }
-      use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
-      use { "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }
-      use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }
-      use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }
-      use { "hrsh7th/cmp-path", after = "cmp-buffer" }
+      use { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' }
+      use { 'hrsh7th/cmp-nvim-lua', after = 'cmp_luasnip' }
+      use { 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' }
+      use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
+      use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
+      use { 'f3fora/cmp-spell', after = 'cmp-path' }
       -- +--------------------------------------------------------------------+
 
       -- (8) LSP Addons
