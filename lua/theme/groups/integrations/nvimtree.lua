@@ -20,6 +20,10 @@ function M.get(cp)
       NvimTreeSpecialFile = { fg = cp.teal_2 },
       NvimTreeImageFile = { fg = cp.text },
       NvimTreeOpenedFile = { fg = cp.blue_1 },
+
+      -- NvimTreeCursorLine = { fg = cp.dark, bg = cp.teal }
+      NvimTreeCursorLine = { bg = cp.surface0 },
+      NvimTreeWinSeparator = { fg = cp.blue_2 },
    }
 end
 

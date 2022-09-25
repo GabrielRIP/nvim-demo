@@ -2,8 +2,6 @@ local M = {}
 
 function M.get(cp)
    return {
-      VertSplit = { fg = cp.subtext0 }, -- the column separating vertically split windows
-
       CursorLineNR = { fg = cp.orange_1, bold = true },
       LineNr = { fg = cp.overlay1 },
       -- CursorLine = { bg = cp.surface0 },
@@ -62,6 +60,7 @@ function M.get(cp)
       Whitespace = { fg = cp.surface1 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
       WildMenu = { bg = cp.overlay0 }, -- current match in 'wildmenu' completion
       WinBar = { fg = cp.rosewater },
+      WinSeparator = { fg = cp.blue_2 },
    }
 end
 

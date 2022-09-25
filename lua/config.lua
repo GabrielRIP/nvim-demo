@@ -2,13 +2,11 @@ local icons = require('iconos')
 local colors = require('theme.colors')
 
 _G.User = {
-   theme = {
-      transparency = false
-   },
-   ui = {
-      float = {
-         border = 'rounded'
-      },
+   NvimTree = {
+      windows_float = true,
+      width = 32,
+      height = 25,
+      position = 'left', -- left and right
    },
    plugins = {
       completion = {
@@ -19,17 +17,9 @@ _G.User = {
          -- By that your live_grep will work related to whole project, not specific package
          patterns = { '.git', 'package.json', '_darcs', '.bzr', '.svn', 'Makefile' } -- Default
       },
-      zen = {
-         kitty_enabled = false,
-         enabled = true, -- sync after change
-      },
    },
    icons = icons,
    colors = colors,
-   statusline = {
-      path_enabled = true,
-      path = 'relative' -- absolute/relative
-   },
    lsp = {
       virtual_text = true, -- show virtual text (errors, warnings, info) inline messages
    },
