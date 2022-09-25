@@ -168,6 +168,14 @@ map('n', '<leader>p', ':silent !npx prettier --write %<CR>')
 -- Toggle para MarkdownPreview
 map('n', '<leader>m', ':MarkdownPreview<CR>', silent)
 
--- Para alternar el spell
-map('n', '<F11>', ':set spell!<CR>', silent)
-map('n', '<F11> <C-0>', ':set spell!<CR>', silent)
+function Spell_Toggle()
+   if (vim.o.spell) then
+      vim.o.spell = false
+      vim.notify('  Desabilitando Spellchecking ... 😭😭')
+   else
+      vim.o.spell = true
+      vim.notify('  Habilitando Spellchecking ... 😃😃')
+   end
+end
+
+map("n", "<F11>", "<cmd>lua Spell_Toggle()<CR>", silent)
