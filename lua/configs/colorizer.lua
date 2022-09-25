@@ -1,6 +1,6 @@
 require('colorizer').setup({
    filetypes = {
-      '*', '!json', '!md'
+      '*', '!json', '!markdown'
    },
    user_default_options = {
       RGB      = true; -- #RGB hex codes
