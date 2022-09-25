@@ -1,10 +1,6 @@
--- HACK: Variables de aceso rapido y keymaps custom
-local TREE_WIDTH = 33 -- Ancho de la ventana NvimTree
-local view_side = 'left' -- direccion de la ventana NvimTree
-
 function Open_Widht()
    local winwidth = vim.go.columns
-   if winwidth <= 110 then
+   if winwidth <= 130 and not User.NvimTree.windows_float then
       return true
    else
       return false
@@ -153,9 +149,20 @@ require 'nvim-tree'.setup({
       },
    },
    view = {
-      width = TREE_WIDTH, -- Ancha de la ventana
+      -- width = TREE_WIDTH, -- Ancha de la ventana
+      width = User.NvimTree.width,
+      float = {
+         enable = User.NvimTree.windows_float,
+         open_win_config = {
+            relative = 'editor',
+            width = User.NvimTree.width,
+            height = User.NvimTree.height,
+            row = (vim.api.nvim_list_uis()[1].height - User.NvimTree.height) * 0.4,
+            col = (vim.api.nvim_list_uis()[1].width - User.NvimTree.width) * 0.5,
+         }
+      },
       hide_root_folder = false, -- Ocultar la ruta de trabajo actual
-      side = view_side, -- El dado del panel NvimTree
+      side = User.NvimTree.position, -- El dado del panel NvimTree
       mappings = {
          custom_only = true, -- Mapeo Personalizado
          list = keymappings -- configuracion de maps
