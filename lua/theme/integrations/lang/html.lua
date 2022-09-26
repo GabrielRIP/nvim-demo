@@ -2,9 +2,11 @@ local M = {}
 
 function M.get(cp)
    return {
-      -- inicio y final de < > en las etiquitas
-      htmlTag = { fg = cp.red },
-      htmlEndTag = { fg = cp.red },
+      ['@tag'] = { fg = cp.red },
+      ["@tag.delimiter"] = { fg = cp.red }, -- Tag delimiter like < > /
+      ["@tag.attribute"] = { fg = cp.flamingo }, -- atributo de las etiquetas.
+
+      ["@text.title"] = { fg = cp.blue_2, bold = true }, -- titles for h1, h2, ... #1, #2...
 
       -- Nombre de las etiquetas
       htmlTagName = { fg = cp.red },

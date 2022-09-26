@@ -2,7 +2,8 @@ local M = {}
 
 function M.get(cp)
    return {
-      Constant    = { fg = cp.peach }, -- (preferred) any constant
+      Constant = { fg = cp.peach }, -- (preferred) any constant
+
       String      = { fg = cp.green }, -- a string constant: "this is a string"
       Character   = { fg = cp.teal }, --  a character constant: 'c', '\n'
       Number      = { fg = cp.peach, bold = true }, --   a number constant: 234, 0xff

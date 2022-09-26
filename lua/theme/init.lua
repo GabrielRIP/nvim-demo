@@ -3,17 +3,15 @@ local colors = require('theme.colors')
 -- -- ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┛
 
 local highlights = {
-   editor = require('theme.groups.editor').get(colors),
-   syntax = require('theme.groups.syntax').get(colors),
-   treesitter = require('theme.groups.integrations.treesitter').get(colors),
-   style_markdown = require('theme.groups.lang.markdown').get(colors),
-   style_html = require('theme.groups.lang.html').get(colors),
-   git_signs = require('theme.groups.integrations.gitsigns').get(colors),
-   lsp_native = require('theme.groups.integrations.lsp_native').get(colors),
-   barbar = require('theme.groups.integrations.barbar').get(colors),
-   nvimtree = require('theme.groups.integrations.nvimtree').get(colors),
-   indent = require('theme.groups.integrations.indent_blank').get(colors),
-   cmp = require('theme.groups.integrations.cmp').get(colors),
+   editor = require('theme.integrations.editor').get(colors),
+   syntax = require('theme.integrations.syntax').get(colors),
+   treesitter = require('theme.integrations.treesitter').get(colors),
+   git_signs = require('theme.integrations.gitsigns').get(colors),
+   lsp_native = require('theme.integrations.lsp_native').get(colors),
+   barbar = require('theme.integrations.barbar').get(colors),
+   nvimtree = require('theme.integrations.nvimtree').get(colors),
+   indent = require('theme.integrations.indent_blank').get(colors),
+   cmp = require('theme.integrations.cmp').get(colors),
 }
 
 for _, element in pairs(highlights) do
