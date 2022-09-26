@@ -66,22 +66,19 @@ map('n', '<Leader>x', ':%d<CR>')
 map('n', 'D', '5j', opts)
 map('n', 'E', '5k', opts)
 
-
--- Telescope
-map('n', '<C-p>', "<CMD>lua require('plugins.telescope').project_files()<CR>")
--- keymap('n', "<S-p>", "<CMD>lua require('plugins.telescope.pickers.multi-rg')()<CR>")
-
 -- Quitar los puntos destacados
 map('n', 'm', ':nohl<CR>', opts)
 
--- Encontrar palabra/archivo en el proyecto
-map('n', '<Leader>pf',
-   "<CMD>lua require('plugins.telescope').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>")
-map('n', '<Leader>pw', "<CMD>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })<CR>")
+-- Telescope
+map('n', '<C-p>', ':Telescope find_files<CR>')
+map('n', '<C-o>', ':Telescope live_grep<CR>')
+
+-- Treesitter
+map('n', '<leader>mo', ':TSHighlightCapturesUnderCursor<CR>')
 
 -- Git
-map('n', '<Leader>gla', "<CMD>lua require('plugins.telescope').my_git_commits()<CR>", {})
-map('n', '<Leader>glc', "<CMD>lua require('plugins.telescope').my_git_bcommits()<CR>", silent)
+-- map('n', '<Leader>gla', "<CMD>lua require('configs.telescope').my_git_commits()<CR>", {})
+-- map('n', '<Leader>glc', "<CMD>lua require('configs.telescope').my_git_bcommits()<CR>", silent)
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │  NOTE: Buffers                                           │
