@@ -17,8 +17,8 @@ return require('packer').startup({
       -- (2) Necesarios para cargar primero
 
       use { 'lewis6991/impatient.nvim' }
-      -- use { 'nathom/filetype.nvim' }
       use { 'nvim-lua/plenary.nvim' }
+      use { 'nvim-lua/popup.nvim' }
       use {
          'kyazdani42/nvim-web-devicons',
          config = function() require('configs.devicons') end
@@ -35,6 +35,7 @@ return require('packer').startup({
          'nvim-treesitter/nvim-treesitter',
          config = function() require('configs.treesitter') end
       }
+      use { 'nvim-treesitter/playground' }
       -- use {
       --    'nvim-treesitter/nvim-treesitter-textobjects',
       --    after = 'nvim-treesitter'
@@ -43,34 +44,23 @@ return require('packer').startup({
       --    'RRethy/nvim-treesitter-textsubjects',
       --    after = 'nvim-treesitter'
       -- }
-      -- use {
-      --    'm-demare/hlargs.nvim',
-      --    config = function() require('hlargs').setup() end
-      -- }
+      use { -- para resaltar los parametros de las funciones como en treesitter
+         'm-demare/hlargs.nvim',
+         config = function() require('hlargs').setup() end
+      }
       -- +--------------------------------------------------------------------+
 
       -- (5) Navigating (Telescope/Tree/Refactor)
-
-      -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-      -- use {
-      --    'nvim-telescope/telescope.nvim',
-      --    requires = {
-      --       { 'nvim-lua/popup.nvim' },
-      --       { 'nvim-lua/plenary.nvim' },
-      --       { 'nvim-telescope/telescope-fzf-native.nvim' }
-      --    },
-      --    config = function() require('plugins.telescope') end
-      -- }
-      -- use { 'cljoly/telescope-repo.nvim' }
-      -- use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+      use {
+         'nvim-telescope/telescope.nvim',
+         config = function() require('configs.telescope') end
+      }
       use {
          'kyazdani42/nvim-tree.lua',
          config = function() require('configs.tree') end
       }
       -- use { 'gbprod/stay-in-place.nvim',
-      --    config = function()
-      --       require('stay-in-place').setup()
-      --    end
+      --    config = function() require('stay-in-place').setup() end
       -- }
       -- +--------------------------------------------------------------------+
 
@@ -120,7 +110,6 @@ return require('packer').startup({
       --    requires = { 'MunifTanjim/nui.nvim' },
       --    config = function() require('plugins.dressing') end
       -- }
-      -- use { 'nvim-lua/popup.nvim' }
       use { 'jose-elias-alvarez/typescript.nvim' }
       -- +--------------------------------------------------------------------+
 
