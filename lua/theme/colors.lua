@@ -30,8 +30,7 @@ return {
    dark_purple = '#c678dd',
    lavender    = '#BABBF1',
    white       = '#FFFFFF',
-   whiteSmoke  = '#DEDBD7',
-
+   whiteSmoke  = '#E7E4E0',
 
    text     = '#c6d0f5',
    subtext1 = '#b5bfe2',

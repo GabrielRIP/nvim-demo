@@ -4,45 +4,50 @@ local M = {}
 vim.g.skip_ts_default_groups = true
 
 function M.get(cp)
-   -- local delimeters = cp.overlay2
-   local cl = cp.mauve -- conditionals, loops
-   local math_logic = cp.peach
 
    return {
       ["@field"] = { fg = cp.teal }, -- For fields.
       ["@property"] = { fg = cp.teal }, -- Same as TSField.
 
-      ["@include"] = { fg = cp.mauve }, -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
+      ["@include"] = { fg = cp.orange_2 }, -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
       ["@operator"] = { fg = cp.sky }, -- For any operator: +, but also -> and * in cp.
-      ["@keyword.operator"] = { fg = cp.mauve }, -- For new keyword operator
       ["@punctuation.special"] = { fg = cp.sky }, -- For special punctutation that does not fall in the catagories before.
 
-      ["@float"] = { fg = cp.peach, bold = true }, -- For floats.
-      ["@number"] = { fg = cp.peach, bold = true }, -- For all numbers
+      ["@float"] = { fg = cp.peach }, -- For floats.
+      ["@number"] = { fg = cp.peach }, -- For all numbers
       ["@boolean"] = { fg = cp.red_2, bold = true }, -- For booleans.
 
       ["@constructor"] = { fg = cp.sapphire }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
-      ["@constant"] = { fg = cp.peach }, -- For constants
-      ["@conditional"] = { fg = cl }, -- For keywords related to conditionnals.
-      ["@repeat"] = { fg = cl }, -- For keywords related to loops.
-      ["@exception"] = { fg = cp.mauve }, -- For exception related keywords.
+      ["@conditional"] = { fg = cp.red }, -- For keywords related to conditionnals.
+      ["@repeat"] = { fg = cp.red }, -- For keywords related to loops.
+      ["@exception"] = { fg = cp.orange_1 }, -- For exception related keywords.
 
-      -- builtin
-      ["@constant.builtin"] = { fg = cp.peach }, -- For constant that are built in the language: nil in Lua.
-      ["@function.builtin"] = { fg = cp.peach }, -- For builtin functions: table.insert in Lua.
+      -- constants
+      ["@constant"] = { fg = cp.red_2 }, -- For constants
+      ["@constant.builtin"] = { fg = cp.red_2 }, -- For constant that are built in the language: nil in Lua.
+      ["@constant.macro"] = { fg = cp.mauve }, -- For constants that are defined by macros: NULL in cp.
 
-      ["@namespace"] = { fg = cp.blue, italic = true }, -- For identifiers referring to modules and namespaces.
+      ["@namespace"] = { fg = cp.blue }, -- For identifiers referring to modules and namespaces.
+
       ["@type"] = { fg = cp.yellow }, -- For types.
       ["@type.builtin"] = { fg = cp.yellow }, -- For builtin types.
-      ["@variable.builtin"] = { fg = cp.red }, -- Variable names that are defined by the languages, like this or self.
 
+      ["@variable"] = { fg = cp.whiteSmoke }, -- Any variable name that does not have another highlighcp.
+      ["@variable.builtin"] = { fg = cp.text }, -- Variable names that are defined by the languages, like this or self.
+
+      -- functions
       ["@function"] = { fg = cp.blue_1, italic = true, bold = true }, -- For function (calls and definitions).
-
       ["@function.macro"] = { fg = cp.teal }, -- For macro defined functions (calls and definitions): each macro_rules in Ruscp.
+      ["@function.builtin"] = { fg = cp.orange_1 }, -- For builtin functions: table.insert in Lua.
+      ['@function.call'] = { fg = cp.peach },
+
       ["@parameter"] = { fg = cp.maroon }, -- For parameters of a function.
-      ["@keyword.function"] = { fg = cp.mauve }, -- For keywords used to define a fuction.
-      ["@keyword"] = { fg = cp.pink_2 }, -- For keywords that don't fall in previous categories.
+
+      -- keywords
+      ["@keyword.function"] = { fg = cp.purple }, -- For keywords used to define a fuction.
+      ["@keyword"] = { fg = cp.pink_1 }, -- For keywords that don't fall in previous categories.
       ["@keyword.return"] = { fg = cp.mauve },
+      ["@keyword.operator"] = { fg = cp.mauve }, -- For new keyword operator
       -- TSAnnotation        = { };    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
       -- TSAttribute         = { };    -- (unstable) TODO: docs
       -- TSCharacter         = { };    -- For characters.
@@ -50,7 +55,6 @@ function M.get(cp)
       ["@text.note"] = { fg = cp.base, bg = cp.blue },
       ["@text.warning"] = { fg = cp.base, bg = cp.yellow },
       ["@text.danger"] = { fg = cp.base, bg = cp.red },
-      ["@constant.macro"] = { fg = cp.mauve }, -- For constants that are defined by macros: NULL in cp.
       -- TSError = { fg = cp.red }, -- For syntax/parser errors.
       -- rustTSField = { fg = cp.surface1 }, -- For fields.
       ["@label"] = { fg = cp.sapphire }, -- For labels: label: in C and :label: in Lua.
@@ -62,8 +66,9 @@ function M.get(cp)
       ["@punctuation.bracket"] = { fg = cp.overlay2, bold = true }, -- For brackets and parenthesis.
       ["@string"] = { fg = cp.green }, -- For strings.
       ["@string.regex"] = { fg = cp.teal_2 }, -- For regexes.
+      ["@string.escape"] = { fg = cp.blue_1, bold = true }, -- For escape characters within a string.
       -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-      ["@variable"] = { fg = cp.text }, -- Any variable name that does not have another highlighcp.
+
       ["@text"] = { fg = cp.text }, -- For strings considerated text in a markup language.
       -- TSEmphasis          = { };    -- For text to be represented with emphasis.
       -- TSUnderline         = { };    -- For text to be represented with an underline.
@@ -71,21 +76,33 @@ function M.get(cp)
       -- TSTitle             = { };    -- Text that is part of a title.
       -- TSLiteral           = { };    -- Literal texcp.
       -- TSURI               = { };    -- Any URI like a link or email.
-      --
-      -- Markdown tresitter parser support
-      -- ["@text.uri"] = { fg = cp.rosewater, italic = true, underline = true }, -- urls, links and emails
-      -- ["@text.literal"] = { fg = cp.teal, italic = true }, -- used for inline code in markdown and for doc in python (""")
-      -- ["@text.reference"] = { fg = cp.lavender, bold = true }, -- references
-      -- ["@text.title"] = { fg = cp.blue, bold = true }, -- titles like: # Example
-      -- ["@text.emphasis"] = { fg = cp.maroon, italic = true }, -- bold
-      -- ["@text.strong"] = { fg = cp.maroon, bold = true }, -- italic
-      -- ["@string.escape"] = { fg = cp.pink }, -- For escape characters within a string.
+
+      -- Markdown
+      ["@text.reference"] = { fg = cp.pink_1 }, -- references
+      ["@text.emphasis"] = { fg = cp.peach, italic = true }, -- bold
+      ["@text.strong"] = { fg = cp.peach, bold = true }, -- italic
+      ["@text.literal"] = { fg = cp.white }, -- used for inline code in markdown and for doc in python (""")
+
+      -- for html
+      ['@tag'] = { fg = cp.red },
+      ["@tag.delimiter"] = { fg = cp.red_1 }, -- Tag delimiter like < > /
+      ["@tag.attribute"] = { fg = cp.flamingo }, -- atributo de las etiquetas.
+      ["@text.title"] = { fg = cp.blue_2, bold = true }, -- titles for h1, h2, ... #1, #2...
+      ["@text.uri"] = { fg = cp.blue_3, underline = true }, -- urls, links and emails
+
+      -- from scss and css
+      ['@string.scss'] = { fg = cp.text },
+      ['@type.scss'] = { fg = cp.red_2 },
+      ['@type.css'] = { fg = cp.red_2 },
 
       -- toml
       ["@property.toml"] = { fg = cp.blue }, -- Differentiates between string and properties
 
       -- json
-      ["@label.json"] = { fg = cp.blue }, -- For labels: label: in C and :label: in Lua.
+      ["@label.json"] = { fg = cp.blue_1 }, -- For labels: label: in C and :label: in Lua.
+      ['@string.json'] = { fg = cp.text },
+      ['@conceal.json'] = { fg = cp.green_1 },
+      ["@punctuation.delimiter.json"] = { fg = cp.red_2 }, -- For delimiters ie: .
 
       -- lua
       ["@constructor.lua"] = { fg = cp.lavender }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
