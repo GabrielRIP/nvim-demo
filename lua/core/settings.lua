@@ -58,6 +58,7 @@ vim.opt.writebackup  = false
 vim.opt.pumheight    = 10
 vim.opt.spelllang    = { 'en', 'es', 'cjk' } -- Establecer idiomas en ese orden
 vim.opt.spellsuggest = 'best,9' -- Muestra las 9 mejores opciones de correccion.
+vim.opt.spelloptions = 'camel' -- Para que no muestre error ortografico en los CamelCase
 vim.opt.inccommand   = 'split' -- Muertra en un split como se reemplazan las palabras.
 
 g.mapleader = ' '
