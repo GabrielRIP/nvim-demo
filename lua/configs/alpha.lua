@@ -88,13 +88,14 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.buttons.val = {
-   button("<C-P>", ' ' .. " " .. "Buscar archivo", "<cmd>lua require('plugins.telescope').project_files()<CR>", {}),
-   button("<S-P>", ' ' .. " " .. "Buscar palabra", "<cmd>lua require('plugins.telescope.pickers.multi-rg')()<CR>", {}),
-   button("SPC s h", ' ' .. " " .. "Abrir achivo reciente", "<cmd>Telescope oldfiles hidden=true<CR>", {}),
-   button("SPC / s d", ' ' .. " " .. "Abrir session reciente", "<cmd>SessionManager load_current_dir_session<CR>", {}),
-   button("SPC / u", ' ' .. " " .. "Actualizar Plugins", "<cmd>PackerSync<CR>", {}),
-   button("SPC / c", ' ' .. " " .. "Configuracion", "<cmd>e $MYVIMRC<CR>", {}),
-   button("-", ' ' .. " " .. "Exit", "<cmd>exit<CR>", {}),
+   button('<C-P>', ' Buscar archivo', ':Telescope find_files<CR>'),
+   button('<S-P>', ' Buscar palabra', ':Telescope live_grep<CR>'),
+   button('SPC s h', ' achivo reciente', ':Telescope oldFiles<CR>'),
+   button('SPC b m', '  Bookmarks  ', ':Telescope marks<CR>'),
+   button('SPC / s d', ' Abrir session reciente', '<cmd>SessionManager load_current_dir_session<CR>'),
+   button('SPC / u', ' Actualizar Plugins', ':PackerSync<CR>'),
+   button('SPC / c', ' Configuracion', '<cmd>e $MYVIMRC<CR>'),
+   button('-', ' Exit', '<cmd>exit<CR>'),
 }
 -- +--------------------------------------------------------------------+
 
