@@ -19,7 +19,7 @@ local function border(hl_name)
    }
 end
 
-local cmp_window = require 'cmp.utils.window'
+local cmp_window = require('cmp.utils.window')
 
 cmp_window.info_ = cmp_window.info
 cmp_window.info = function(self)
@@ -36,7 +36,7 @@ local options = {
       },
       documentation = {
          border = border('FloatBorder'),
-         winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder'
+         winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
       },
    },
    snippet = {
@@ -61,10 +61,10 @@ local options = {
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm {
+      ['<CR>'] = cmp.mapping.confirm({
          behavior = cmp.ConfirmBehavior.Replace,
          select = false,
-      },
+      }),
       ['<Tab>'] = cmp.mapping(function(fallback)
          if cmp.visible() then
             cmp.select_next_item()

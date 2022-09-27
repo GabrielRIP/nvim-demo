@@ -19,7 +19,6 @@ function Get_icon(filename, extension)
    else
       return
    end
-
 end
 
 -- holds any currently open floating windows displaying buffer tags
@@ -39,7 +38,6 @@ function Create_tag_float(parent_win)
          table.insert(lista_aux, item)
       end
    end
-
 
    local file_name = lista_aux[#lista_aux - 1]
    local file_type = lista_aux[#lista_aux]
@@ -106,10 +104,7 @@ local au_id = nil
 local enabled = false
 
 function M.enable()
-   au_id = vim.api.nvim_create_autocmd(
-      { 'WinEnter' },
-      { callback = M.display_buffertags }
-   )
+   au_id = vim.api.nvim_create_autocmd({ 'WinEnter' }, { callback = M.display_buffertags })
    enabled = true
    -- run it so an initial window move isn't necessary
    M.display_buffertags()
@@ -133,7 +128,7 @@ end
 
 function M.setup()
    vim.api.nvim_create_user_command('BuffertagToggle', M.toggle, {
-      desc = 'Toggle the Buffertag feature on and off.'
+      desc = 'Toggle the Buffertag feature on and off.',
    })
 
    M.toggle()

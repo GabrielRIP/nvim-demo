@@ -22,26 +22,28 @@ local cabello = {
    },
    opts = {
       position = 'center',
-      hl       = 'SecondColor'
-   }
+      hl = 'SecondColor',
+   },
 }
 
 -- +--------------------------------------------------------------------+
 
 -- Informacion de la fecha
 local get_date = io.popen('echo "$(date +%a) $(date +%d) de $(date +%b)" | tr -d "\n"')
-if get_date == nil then return end
+if get_date == nil then
+   return
+end
 
 local date = get_date:read('*a')
 get_date:close()
 
 local fecha = {
    type = 'text',
-   val  = '  Hoy es ' .. date,
+   val = '  Hoy es ' .. date,
    opts = {
       position = 'center',
-      hl       = 'FifthColor'
-   }
+      hl = 'FifthColor',
+   },
 }
 -- +--------------------------------------------------------------------+
 
@@ -60,16 +62,18 @@ local function button(sc, txt, keybind, keybind_opts)
    local sc_ = sc:gsub('%s', ''):gsub(leader, '<leader>')
 
    local opts = {
-      position       = 'center',
-      shortcut       = sc,
-      cursor         = 5,
-      width          = 50,
+      position = 'center',
+      shortcut = sc,
+      cursor = 5,
+      width = 50,
       align_shortcut = 'right',
-      hl_shortcut    = 'FirstColor',
+      hl_shortcut = 'FirstColor',
    }
    if keybind then
       keybind_opts = if_nil(keybind_opts, {
-         noremap = true, silent = true, nowait = true
+         noremap = true,
+         silent = true,
+         nowait = true,
       })
       opts.keymap = { 'n', sc_, keybind, keybind_opts }
    end
@@ -80,10 +84,10 @@ local function button(sc, txt, keybind, keybind_opts)
    end
 
    return {
-      type     = 'button',
-      val      = txt,
+      type = 'button',
+      val = txt,
       on_press = on_press,
-      opts     = opts,
+      opts = opts,
    }
 end
 
@@ -112,15 +116,15 @@ end
 dashboard.section.footer.val = footer()
 dashboard.section.footer.opts = {
    position = 'center',
-   hl       = 'FourthColor',
+   hl = 'FourthColor',
 }
 -- +--------------------------------------------------------------------+
 
 local section = {
    section_cabello = cabello,
-   section_date    = fecha,
-   buttons         = dashboard.section.buttons,
-   section_nvim    = dashboard.section.footer,
+   section_date = fecha,
+   buttons = dashboard.section.buttons,
+   section_nvim = dashboard.section.footer,
 }
 
 local opts = {
@@ -134,7 +138,7 @@ local opts = {
       section.section_nvim,
    },
    opts = {
-      margin = 5
+      margin = 5,
    },
 }
 
@@ -148,18 +152,18 @@ alpha.setup(opts)
 vim.api.nvim_create_augroup('alpha_tabline', { clear = true })
 
 vim.api.nvim_create_autocmd('FileType', {
-   group   = 'alpha_tabline',
+   group = 'alpha_tabline',
    pattern = 'alpha',
    command = 'set showtabline=0 laststatus=0 noruler',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-   group    = 'alpha_tabline',
-   pattern  = 'alpha',
+   group = 'alpha_tabline',
+   pattern = 'alpha',
    callback = function()
       vim.api.nvim_create_autocmd('BufUnload', {
-         group   = 'alpha_tabline',
-         buffer  = 0,
+         group = 'alpha_tabline',
+         buffer = 0,
          command = 'set showtabline=2 ruler laststatus=3',
       })
    end,

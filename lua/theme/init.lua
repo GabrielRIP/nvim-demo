@@ -22,6 +22,6 @@ end
 
 -- highlight Personalizados
 vim.api.nvim_set_hl(0, 'FirstColor', { fg = colors.orange_1 })
-vim.api.nvim_set_hl(0, 'SecondColor', { fg = colors.blue_2 });
-vim.api.nvim_set_hl(0, 'FourthColor', { fg = colors.red_2 });
+vim.api.nvim_set_hl(0, 'SecondColor', { fg = colors.blue_2 })
+vim.api.nvim_set_hl(0, 'FourthColor', { fg = colors.red_2 })
 vim.api.nvim_set_hl(0, 'FifthColor', { fg = colors.teal_2 })

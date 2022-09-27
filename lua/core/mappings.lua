@@ -45,9 +45,8 @@ map('v', '<', '<gv', silent)
 map('v', '>', '>gv', silent)
 
 -- Case change in visual mode
-map("v", "`", "u", silent)
-map("v", "<A-`>", "U", silent)
-
+map('v', '`', 'u', silent)
+map('v', '<A-`>', 'U', silent)
 
 -- Escapar del mode 'I' and 'V'
 map('i', 'kj', '<esc>', opts)
@@ -140,11 +139,11 @@ map('n', 'rf', '<cmd>lua vim.lsp.buf.references({ includeDeclaration = false })<
 map('n', '<C-Space>', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent)
 map('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', silent)
 map('v', '<Leader>ca', "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", silent)
-map('n', '<Leader>re', "<cmd>lua vim.lsp.buf.rename()<CR>", silent)
-map('n', '<Leader>cf', "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", silent)
+map('n', '<Leader>re', '<cmd>lua vim.lsp.buf.rename()<CR>', silent)
+map('n', '<Leader>cf', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', silent)
 map('v', '<Leader>cf', "<cmd>'<.'>lua vim.lsp.buf.range_formatting()<CR>", silent)
-map('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", silent)
-map('n', 'L', "<cmd>lua vim.lsp.buf.signature_help()<CR>", silent)
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', silent)
+map('n', 'L', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silent)
 
 map('n', '<Leader>d', "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 100 })<CR>", silent)
 map('n', ']g', "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded', max_width = 100 }})<CR>", silent)
@@ -165,14 +164,9 @@ map('n', '<leader>p', ':silent !npx prettier --write %<CR>')
 -- Toggle para MarkdownPreview
 map('n', '<leader>m', ':MarkdownPreview<CR>', silent)
 
-function Spell_Toggle()
-   if (vim.o.spell) then
-      vim.o.spell = false
-      vim.notify('  Desabilitando Spellchecking ... 😭😭')
-   else
-      vim.o.spell = true
-      vim.notify('  Habilitando Spellchecking ... 😃😃')
-   end
-end
+-- Toggle para habilitar 'spell'
+map('n', '<F11>', "<cmd>lua require('functions').spell_toggle()<CR>", silent)
 
-map("n", "<F11>", "<cmd>lua Spell_Toggle()<CR>", silent)
+-- Numero de coincidencias seleccionadas
+map('n', 'n', "nzz<cmd>lua require('functions').hl_search(0.1)<CR>")
+map('n', 'N', "Nzz<cmd>lua require('functions').hl_search(0.1)<CR>")

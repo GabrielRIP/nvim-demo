@@ -5,9 +5,6 @@ if not present then
 end
 
 telescope.setup({
-
-})
-local options = {
    defaults = {
       vimgrep_arguments = {
          'rg',
@@ -56,4 +53,4 @@ local options = {
          n = { ['q'] = require('telescope.actions').close },
       },
    },
-}
+})

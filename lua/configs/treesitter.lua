@@ -6,8 +6,15 @@ end
 
 treesitter.setup({
    ensure_installed = {
-      'lua', 'javascript', 'typescript', 'html', 'json', 'markdown', 'markdown_inline',
-      'css', 'scss'
+      'lua',
+      'javascript',
+      'typescript',
+      'html',
+      'json',
+      'markdown',
+      'markdown_inline',
+      'css',
+      'scss',
    },
    highlight = {
       enable = true,
@@ -42,5 +49,5 @@ treesitter.setup({
          goto_node = '<cr>',
          show_help = '?',
       },
-   }
+   },
 })

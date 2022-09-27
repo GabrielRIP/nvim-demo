@@ -4,19 +4,19 @@ function M.get(cp)
    return {
       Constant = { fg = cp.peach }, -- (preferred) any constant
 
-      String      = { fg = cp.green }, -- a string constant: "this is a string"
-      Character   = { fg = cp.teal }, --  a character constant: 'c', '\n'
-      Number      = { fg = cp.peach, bold = true }, --   a number constant: 234, 0xff
-      Float       = { fg = cp.peach, bold = true }, --    a floating point constant: 2.3e10
-      Boolean     = { fg = cp.red_2, bold = true }, --  a boolean constant: TRUE, false
-      Identifier  = { fg = cp.teal_2 }, -- (preferred) any variable name
-      Function    = { fg = cp.blue_1, italic = true, bold = true }, -- function name (also: methods for classes) Statement = { fg = cp.mauve }, -- (preferred) any statement
-      Statement   = { fg = cp.red }, -- (preferred) any statement, tags html
+      String = { fg = cp.green }, -- a string constant: "this is a string"
+      Character = { fg = cp.teal }, --  a character constant: 'c', '\n'
+      Number = { fg = cp.peach, bold = true }, --   a number constant: 234, 0xff
+      Float = { fg = cp.peach, bold = true }, --    a floating point constant: 2.3e10
+      Boolean = { fg = cp.red_2, bold = true }, --  a boolean constant: TRUE, false
+      Identifier = { fg = cp.teal_2 }, -- (preferred) any variable name
+      Function = { fg = cp.blue_1, italic = true, bold = true }, -- function name (also: methods for classes) Statement = { fg = cp.mauve }, -- (preferred) any statement
+      Statement = { fg = cp.red }, -- (preferred) any statement, tags html
       Conditional = { fg = cp.red }, --  if, then, else, endif, switch, etcp.
-      Repeat      = { fg = cp.red }, --   for, do, while, etcp.
-      Label       = { fg = cp.peach }, --    case, default, etcp.
-      Operator    = { fg = cp.sky }, -- "sizeof", "+", "*", etcp.
-      Keyword     = { fg = cp.pink_2 }, --  any other keyword
+      Repeat = { fg = cp.red }, --   for, do, while, etcp.
+      Label = { fg = cp.peach }, --    case, default, etcp.
+      Operator = { fg = cp.sky }, -- "sizeof", "+", "*", etcp.
+      Keyword = { fg = cp.pink_2 }, --  any other keyword
       -- Exception   = {}, --  try, catch, throw
 
       PreProc = { fg = cp.pink }, -- (preferred) generic Preprocessor
@@ -87,15 +87,15 @@ function M.get(cp)
       GlyphPalette7 = { fg = cp.text },
       GlyphPalette9 = { fg = cp.red },
 
-      Define = { link = "PreProc" }, -- preprocessor #define
-      Macro = { link = "PreProc" }, -- same as Define
-      PreCondit = { link = "PreProc" }, -- preprocessor #if, #else, #endif, etc.
+      Define = { link = 'PreProc' }, -- preprocessor #define
+      Macro = { link = 'PreProc' }, -- same as Define
+      PreCondit = { link = 'PreProc' }, -- preprocessor #if, #else, #endif, etc.
 
-      SpecialChar = { link = "Special" }, -- special character in a constant
-      Tag = { link = "Special" }, -- you can use CTRL-] on this
-      Delimiter = { link = "Special" }, -- character that needs attention
-      SpecialComment = { link = "Special" }, -- special things inside a comment
-      Debug = { link = "Special" }, -- debugging statements
+      SpecialChar = { link = 'Special' }, -- special character in a constant
+      Tag = { link = 'Special' }, -- you can use CTRL-] on this
+      Delimiter = { link = 'Special' }, -- character that needs attention
+      SpecialComment = { link = 'Special' }, -- special things inside a comment
+      Debug = { link = 'Special' }, -- debugging statements
    }
 end
 

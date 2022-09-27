@@ -24,26 +24,26 @@ local function highlight(group, fg, bg, gui)
 end
 
 local get_lsp_client = function(msg)
-   msg = msg or "-"
-   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+   msg = msg or '-'
+   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
    local clients = vim.lsp.get_active_clients()
    if next(clients) == nil then
       return msg
    end
-   local lsps = ""
+   local lsps = ''
    for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-         if lsps == "" then
+         if lsps == '' then
             lsps = client.name
          else
             if not string.find(lsps, client.name) then
-               lsps = lsps .. ", " .. client.name
+               lsps = lsps .. ', ' .. client.name
             end
          end
       end
    end
-   if lsps == "" then
+   if lsps == '' then
       return msg
    else
       return lsps
@@ -51,15 +51,15 @@ local get_lsp_client = function(msg)
 end
 
 local colors = {
-   bg         = '#1D2024';
-   bg_2       = User.colors.mantle,
-   text_dark  = '#181818',
+   bg = '#1D2024',
+   bg_2 = User.colors.mantle,
+   text_dark = '#181818',
    text_light = '#C5C5C5',
-   text_lsp   = '#F2C260',
-   text_blue  = '#51afef',
+   text_lsp = '#F2C260',
+   text_blue = '#51afef',
 
-   giticon   = '#EF7028',
-   gitAdd    = User.colors.green,
+   giticon = '#EF7028',
+   gitAdd = User.colors.green,
    gitDelete = User.colors.red,
    gitChange = User.colors.yellow,
 
@@ -69,41 +69,41 @@ local colors = {
    -- lspDiagInfo  = '#4FC1FF',
 
    lspDiagError = User.colors.red,
-   lspDiagWarn  = User.colors.yellow,
-   lspDiagHint  = User.colors.teal,
-   lspDiagInfo  = User.colors.sky,
+   lspDiagWarn = User.colors.yellow,
+   lspDiagHint = User.colors.teal,
+   lspDiagInfo = User.colors.sky,
 }
 
 local mode_map = {
-   ['n']        = { '#DAA520', 'NORMAL' },
-   ['i']        = { '#569CD6', 'INSERT' },
-   ['R']        = { '#DA6A73', 'REPLACE' },
-   ['c']        = { '#98c379', 'COMMAND' },
-   ['v']        = { '#79dac8', 'VISUAL' },
-   ['V']        = { '#79dac8', 'VIS-LN' },
-   ['']        = { '#79dac8', 'VIS-BLK' },
-   ['s']        = { '#FF8800', 'SELECT' },
-   ['S']        = { '#FF8800', 'SEL-LN' },
-   ['']        = { '#DCDCAA', 'SEL-BLK' },
-   ['t']        = { '#569CD6', 'TERMINAL' },
-   ['Rv']       = { '#D16D69', 'VIR-REP' },
-   ['rm']       = { '#FF0000', '- More -' },
-   ['r']        = { '#FF0000', "- Hit-Enter -" },
-   ['r?']       = { '#FF0000', "- Confirm -" },
-   ['cv']       = { '#569CD6', "Vim Ex Mode" },
-   ['ce']       = { '#569CD6', "Normal Ex Mode" },
-   ['!']        = { '#569CD6', "Shell Running" },
-   ['ic']       = { '#DCDCAA', 'Insert mode completion |compl-generic|' },
-   ['no']       = { '#DCDCAA', 'Operator-pending' },
-   ['nov']      = { '#DCDCAA', 'Operator-pending (forced charwise |o_v|)' },
-   ['noV']      = { '#DCDCAA', 'Operator-pending (forced linewise |o_V|)' },
+   ['n'] = { '#DAA520', 'NORMAL' },
+   ['i'] = { '#569CD6', 'INSERT' },
+   ['R'] = { '#DA6A73', 'REPLACE' },
+   ['c'] = { '#98c379', 'COMMAND' },
+   ['v'] = { '#79dac8', 'VISUAL' },
+   ['V'] = { '#79dac8', 'VIS-LN' },
+   [''] = { '#79dac8', 'VIS-BLK' },
+   ['s'] = { '#FF8800', 'SELECT' },
+   ['S'] = { '#FF8800', 'SEL-LN' },
+   [''] = { '#DCDCAA', 'SEL-BLK' },
+   ['t'] = { '#569CD6', 'TERMINAL' },
+   ['Rv'] = { '#D16D69', 'VIR-REP' },
+   ['rm'] = { '#FF0000', '- More -' },
+   ['r'] = { '#FF0000', '- Hit-Enter -' },
+   ['r?'] = { '#FF0000', '- Confirm -' },
+   ['cv'] = { '#569CD6', 'Vim Ex Mode' },
+   ['ce'] = { '#569CD6', 'Normal Ex Mode' },
+   ['!'] = { '#569CD6', 'Shell Running' },
+   ['ic'] = { '#DCDCAA', 'Insert mode completion |compl-generic|' },
+   ['no'] = { '#DCDCAA', 'Operator-pending' },
+   ['nov'] = { '#DCDCAA', 'Operator-pending (forced charwise |o_v|)' },
+   ['noV'] = { '#DCDCAA', 'Operator-pending (forced linewise |o_V|)' },
    ['noCTRL-V'] = { '#DCDCAA', 'Operator-pending (forced blockwise |o_CTRL-V|) CTRL-V is one character' },
-   ['niI']      = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Insert-mode|' },
-   ['niR']      = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Replace-mode|' },
-   ['niV']      = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|' },
-   ['ix']       = { '#DCDCAA', 'Insert mode |i_CTRL-X| completion' },
-   ['Rc']       = { '#DCDCAA', 'Replace mode completion |compl-generic|' },
-   ['Rx']       = { '#DCDCAA', 'Replace mode |i_CTRL-X| completion' },
+   ['niI'] = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Insert-mode|' },
+   ['niR'] = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Replace-mode|' },
+   ['niV'] = { '#DCDCAA', 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|' },
+   ['ix'] = { '#DCDCAA', 'Insert mode |i_CTRL-X| completion' },
+   ['Rc'] = { '#DCDCAA', 'Replace mode completion |compl-generic|' },
+   ['Rx'] = { '#DCDCAA', 'Replace mode |i_CTRL-X| completion' },
 }
 
 -- ┌                                                                    ┐
@@ -112,18 +112,26 @@ local mode_map = {
 gls.left = {}
 
 table.insert(gls.left, {
-   SpaceBlankInit = { provider = function() return ' ' end },
+   SpaceBlankInit = {
+      provider = function()
+         return ' '
+      end,
+   },
 })
 -- +--------------------------------------------------------------------+
 local HideInNoFile = function()
    local tbl = { ['dashboard'] = true, [''] = true }
-   if tbl[vim.bo.filetype] then return true end
+   if tbl[vim.bo.filetype] then
+      return true
+   end
    return false
 end
 
 local ShowFile = function()
    local tbl = { ['dashboard'] = true, [''] = true }
-   if tbl[vim.bo.filetype] == nil then return true end
+   if tbl[vim.bo.filetype] == nil then
+      return true
+   end
    return false
 end
 
@@ -143,7 +151,7 @@ table.insert(gls.left, {
       provider = function()
          return mode_map[vim.fn.mode()][2]
       end,
-      highlight = 'GalaxyModeNvim'
+      highlight = 'GalaxyModeNvim',
    },
 })
 
@@ -157,7 +165,7 @@ table.insert(gls.left, {
       highlight = 'ModeNvimRight',
       separator = ' ',
       separator_highlight = { colors.bg, colors.bg },
-   }
+   },
 })
 
 table.insert(gls.left, {
@@ -168,7 +176,7 @@ table.insert(gls.left, {
          return rightBracket
       end,
       highlight = 'ModeNvimRight2',
-   }
+   },
 })
 -- +--------------------------------------------------------------------+
 -- Parte del peso del archivo
@@ -240,7 +248,9 @@ gls.mid = {}
 local HideInWidthComplete = function()
    local tbl = { ['dashboard'] = true, [''] = true }
    if condition.hide_in_width() then
-      if tbl[vim.bo.filetype] then return false end
+      if tbl[vim.bo.filetype] then
+         return false
+      end
       return true
    end
 end
@@ -248,11 +258,12 @@ end
 table.insert(gls.mid, {
    LeftLspClient = {
       condition = HideInWidthComplete,
-      provider = function() return leftBracket end,
-      highlight = { colors.bg, colors.bg_2 }
-   }
+      provider = function()
+         return leftBracket
+      end,
+      highlight = { colors.bg, colors.bg_2 },
+   },
 })
-
 
 table.insert(gls.mid, {
    ShowLspClient = {
@@ -266,9 +277,11 @@ table.insert(gls.mid, {
 table.insert(gls.mid, {
    RightLspClient = {
       condition = HideInWidthComplete,
-      provider = function() return rightBracket end,
-      highlight = { colors.bg, colors.bg_2 }
-   }
+      provider = function()
+         return rightBracket
+      end,
+      highlight = { colors.bg, colors.bg_2 },
+   },
 })
 
 -- ┌                                                                    ┐
@@ -279,9 +292,11 @@ gls.right = {}
 -- Git, iconos para cambios en el documento
 table.insert(gls.right, {
    LeftSeparatorGit = {
-      provider = function() return ' ' end,
-      highlight = { colors.bg, colors.bg }
-   }
+      provider = function()
+         return ' '
+      end,
+      highlight = { colors.bg, colors.bg },
+   },
 })
 
 table.insert(gls.right, {
@@ -342,7 +357,7 @@ table.insert(gls.right, {
          return '  '
       end,
       highlight = { colors.text_light, colors.bg },
-   }
+   },
 })
 
 table.insert(gls.right, {
@@ -350,7 +365,7 @@ table.insert(gls.right, {
       condition = NoGitWorkspace,
       provider = 'FileFormat',
       highlight = { colors.giticon, colors.bg },
-   }
+   },
 })
 
 -- Posicion del cursor en el documento
@@ -362,7 +377,7 @@ table.insert(gls.right, {
       end,
       highlight = 'ModeNvimLeftIcon',
       separator = ' ',
-      separator_highlight = { colors.bg, colors.bg }
+      separator_highlight = { colors.bg, colors.bg },
    },
 })
 
@@ -384,7 +399,11 @@ table.insert(gls.right, {
 
 -- espacion final sin highlight
 table.insert(gls.right, {
-   SpaceBlankEnd = { provider = function() return ' ' end, },
+   SpaceBlankEnd = {
+      provider = function()
+         return ' '
+      end,
+   },
 })
 
 -- ┏╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┓
@@ -394,27 +413,36 @@ gls.short_line_left = {}
 
 table.insert(gls.short_line_left, {
    SpaceInitShort = {
-      provider = function() return ' ' end,
+      provider = function()
+         return ' '
+      end,
       separator = ' ',
-      separator_highlight = { colors.text_blue, colors.text_blue }
+      separator_highlight = { colors.text_blue, colors.text_blue },
    },
 })
 
 table.insert(gls.short_line_left, {
    BlankSpaceShortRight = {
-      provider = function() return ' ' end,
-      highlight = { colors.bg, colors.bg }
-   }
+      provider = function()
+         return ' '
+      end,
+      highlight = { colors.bg, colors.bg },
+   },
 })
 
 local List_Name_color = {
-   ['NvimTree'] = true, ['vista'] = true, ['dbui'] = true, ['packer'] = true
+   ['NvimTree'] = true,
+   ['vista'] = true,
+   ['dbui'] = true,
+   ['packer'] = true,
 }
 
 table.insert(gls.short_line_left, {
    BufferType = {
       condition = function()
-         if List_Name_color[vim.bo.filetype] then return false end
+         if List_Name_color[vim.bo.filetype] then
+            return false
+         end
          return true
       end,
       provider = 'FileTypeName',
@@ -425,13 +453,14 @@ table.insert(gls.short_line_left, {
 table.insert(gls.short_line_left, {
    BufferTypeNvimTree = {
       condition = function()
-         if List_Name_color[vim.bo.filetype] then return true end
+         if List_Name_color[vim.bo.filetype] then
+            return true
+         end
          return false
       end,
       provider = 'FileTypeName',
       highlight = { colors.gitChange, colors.bg, 'bold' },
    },
-
 })
 
 table.insert(gls.short_line_left, {
@@ -439,8 +468,8 @@ table.insert(gls.short_line_left, {
       provider = function()
          return ' '
       end,
-      highlight = { colors.bg, colors.bg }
-   }
+      highlight = { colors.bg, colors.bg },
+   },
 })
 
 table.insert(gls.short_line_left, {
@@ -465,8 +494,10 @@ table.insert(gls.short_line_right, {
 
 table.insert(gls.short_line_right, {
    SpaceEndShort = {
-      provider = function() return ' ' end,
+      provider = function()
+         return ' '
+      end,
       separator = ' ',
-      separator_highlight = { colors.text_blue, colors.text_blue }
+      separator_highlight = { colors.text_blue, colors.text_blue },
    },
 })

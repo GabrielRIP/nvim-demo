@@ -11,11 +11,31 @@ function U.mason()
 
    mason_lsp.setup({
       ensure_installed = {
-         'html-lsp', 'css-lsp', 'emmet-ls', 'typescript-language-server', 'eslint-lsp',
-         'stylelint-lsp', 'json-lsp', 'lua-language-server', 'tailwindcss-language-server',
-         'pyright', 'svelte-language-server', 'rust-analyzer', 'marksman', 'yaml-language-server',
+         'html-lsp',
+         'css-lsp',
+         'emmet-ls',
+         'typescript-language-server',
+         'eslint-lsp',
+         'stylelint-lsp',
+         'json-lsp',
+         'lua-language-server',
+         'tailwindcss-language-server',
+         'pyright',
+         'svelte-language-server',
+         'rust-analyzer',
+         'marksman',
+         'yaml-language-server',
          'clangd',
+
+         -- debug
          -- 'chrome-debug-adapter', 'node-debug2-adapter'
+
+         -- formatting
+         'stylua',
+         'prettierd',
+
+         -- linters
+         'eslint-d',
       },
       automatic_installation = true,
    })
@@ -45,27 +65,30 @@ end
 
 U.on_attach = function(client, bufnr)
    if client.server_capabilities.documentHighlightProvider then
-      vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-      vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
-      vim.api.nvim_create_autocmd("CursorHold", {
+      vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = 'lsp_document_highlight' })
+      vim.api.nvim_create_autocmd('CursorHold', {
          callback = vim.lsp.buf.document_highlight,
          buffer = bufnr,
-         group = "lsp_document_highlight",
-         desc = "Document Highlight",
+         group = 'lsp_document_highlight',
+         desc = 'Document Highlight',
       })
-      vim.api.nvim_create_autocmd("CursorMoved", {
+      vim.api.nvim_create_autocmd('CursorMoved', {
          callback = vim.lsp.buf.clear_references,
          buffer = bufnr,
-         group = "lsp_document_highlight",
-         desc = "Clear All the References",
+         group = 'lsp_document_highlight',
+         desc = 'Clear All the References',
       })
    end
+
+   client.server_capabilities.documentFormattingProvider = true
+   client.server_capabilities.documentRangeFormattingProvider = true
 end
 
 U.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 U.capabilities.textDocument.completion.completionItem = {
-   documentationFormat = { "markdown", "plaintext" },
+   documentationFormat = { 'markdown', 'plaintext' },
    snippetSupport = true,
    preselectSupport = true,
    insertReplaceSupport = true,
@@ -75,16 +98,19 @@ U.capabilities.textDocument.completion.completionItem = {
    tagSupport = { valueSet = { 1 } },
    resolveSupport = {
       properties = {
-         "documentation",
-         "detail",
-         "additionalTextEdits",
+         'documentation',
+         'detail',
+         'additionalTextEdits',
       },
    },
 }
 U.handlers = {
-   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true }),
+   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+   ['textDocument/publishDiagnostics'] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics,
+      { virtual_text = true }
+   ),
 }
 
 return U

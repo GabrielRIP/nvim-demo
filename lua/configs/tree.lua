@@ -11,10 +11,10 @@ end
 -- iconos personalizados
 local icons_custom = {
    diagnostics = {
-      hint    = User.icons.diagnostic.hint,
-      info    = User.icons.diagnostic.info,
+      hint = User.icons.diagnostic.hint,
+      info = User.icons.diagnostic.info,
       warning = User.icons.diagnostic.warning,
-      error   = User.icons.diagnostic.error,
+      error = User.icons.diagnostic.error,
    },
    git = {
       unstaged = User.icons.git.modifier,
@@ -25,7 +25,7 @@ local icons_custom = {
       deleted = User.icons.git.remove,
       ignored = '◌',
    },
-   indents = { corner = User.icons.others.curve }
+   indents = { corner = User.icons.others.curve },
 }
 
 -- Atajos de teclado dentro de NvimTree
@@ -61,26 +61,26 @@ local keymappings = {
    { key = 'q', action = 'close' },
    { key = 'g?', action = 'toggle_help' },
    { key = 'W', action = 'collapse_all' },
-   { key = 'S', action = 'search_node' }
+   { key = 'S', action = 'search_node' },
 }
 -- +--------------------------------------------------------------------+
 
 -- NOTE: Configuracion de NvimTree
-require 'nvim-tree'.setup({
-   disable_netrw                      = false,
-   hijack_netrw                       = true,
-   open_on_setup                      = false,
-   ignore_ft_on_setup                 = {},
-   open_on_tab                        = false, -- Abre el arbol cuando se cambia de buffer o se abro uno
-   hijack_cursor                      = true, -- para tener el cursor un espacio después del nombre
-   sort_by                            = 'case_sensitive', -- Como se ordena en directorio: 'name', 'case_sensitive', 'modification_time', 'extension'
-   update_cwd                         = true, -- Cambiar el directorio raiz del arbol en DirChanged
+require('nvim-tree').setup({
+   disable_netrw = false,
+   hijack_netrw = true,
+   open_on_setup = false,
+   ignore_ft_on_setup = {},
+   open_on_tab = false, -- Abre el arbol cuando se cambia de buffer o se abro uno
+   hijack_cursor = true, -- para tener el cursor un espacio después del nombre
+   sort_by = 'case_sensitive', -- Como se ordena en directorio: 'name', 'case_sensitive', 'modification_time', 'extension'
+   update_cwd = true, -- Cambiar el directorio raiz del arbol en DirChanged
    hijack_unnamed_buffer_when_opening = false,
-   respect_buf_cwd                    = true, -- Cambiar el CWD de NvimTree al nuevo buffer al abrir NvimTree
+   respect_buf_cwd = true, -- Cambiar el CWD de NvimTree al nuevo buffer al abrir NvimTree
 
    diagnostics = { -- Diagnosticos del LSP
       enable = true, -- Habilitar el diagnostico
-      icons  = icons_custom.diagnostics -- Iconos de Diagnosticos
+      icons = icons_custom.diagnostics, -- Iconos de Diagnosticos
    },
 
    renderer = {
@@ -91,7 +91,7 @@ require 'nvim-tree'.setup({
       root_folder_modifier = ':~',
       indent_markers = { -- Indentado
          enable = true, -- Habilitar el indentado
-         icons = icons_custom.indents -- Iconos para el indentado Custom
+         icons = icons_custom.indents, -- Iconos para el indentado Custom
       },
       icons = { -- Iconos de carpetas, Git
          show = {
@@ -101,19 +101,19 @@ require 'nvim-tree'.setup({
             git = true,
          },
          glyphs = {
-            git = icons_custom.git -- Iconos de estados de Git
-         }
-      }
+            git = icons_custom.git, -- Iconos de estados de Git
+         },
+      },
    },
 
    update_focused_file = {
-      enable      = true, -- Actualizar el archivo enfocado en 'BufEnter'
-      update_cwd  = true,
-      ignore_list = {}
+      enable = true, -- Actualizar el archivo enfocado en 'BufEnter'
+      update_cwd = true,
+      ignore_list = {},
    },
    system_open = {
       cmd = '',
-      args = {}
+      args = {},
    },
    filters = {
       dotfiles = true, -- Nom mostrar archivos ocultos, Alternar con 'H' -> toggle_dotfiles
@@ -159,19 +159,19 @@ require 'nvim-tree'.setup({
             height = User.NvimTree.height,
             row = (vim.api.nvim_list_uis()[1].height - User.NvimTree.height) * 0.4,
             col = (vim.api.nvim_list_uis()[1].width - User.NvimTree.width) * 0.5,
-         }
+         },
       },
       hide_root_folder = false, -- Ocultar la ruta de trabajo actual
       side = User.NvimTree.position, -- El dado del panel NvimTree
       mappings = {
          custom_only = true, -- Mapeo Personalizado
-         list = keymappings -- configuracion de maps
+         list = keymappings, -- configuracion de maps
       },
       number = false, -- Para agrear numero de lineas
-      relativenumber = false -- Un numero relativo a la linea en focus
+      relativenumber = false, -- Un numero relativo a la linea en focus
    },
    trash = {
       cmd = 'trash', -- Comando para eliminal elementos, default=>'gio trash'
-      require_confirm = true -- Aviso para aceptar la eliminacion del elemento.
-   }
+      require_confirm = true, -- Aviso para aceptar la eliminacion del elemento.
+   },
 })

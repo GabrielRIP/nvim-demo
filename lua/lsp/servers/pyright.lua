@@ -5,9 +5,9 @@ M.settings = {
       analysis = {
          autoSearchPaths = true,
          diagnosticMode = 'workspace',
-         useLibraryCodeForTypes = true
-      }
-   }
+         useLibraryCodeForTypes = true,
+      },
+   },
 }
 
 return M

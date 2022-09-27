@@ -29,37 +29,37 @@ opt.smartcase = true
 opt.mouse = 'a'
 
 -- Numbers
-opt.number      = true
+opt.number = true
 opt.numberwidth = 2
-opt.ruler       = false
+opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append 'sI'
+opt.shortmess:append('sI')
 
-opt.signcolumn    = 'yes'
-opt.splitbelow    = true
-opt.splitright    = true
+opt.signcolumn = 'yes'
+opt.splitbelow = true
+opt.splitright = true
 opt.termguicolors = true
-opt.timeoutlen    = 400
-opt.undofile      = true
+opt.timeoutlen = 400
+opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append '<>[]hl'
+opt.whichwrap:append('<>[]hl')
 
-vim.opt.wrap         = false
-vim.opt.linebreak    = true
-vim.opt.breakindent  = true
-vim.opt.hidden       = true
-vim.opt.writebackup  = false
-vim.opt.pumheight    = 10
-vim.opt.spelllang    = { 'en', 'es', 'cjk' } -- Establecer idiomas en ese orden
+vim.opt.wrap = false
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.hidden = true
+vim.opt.writebackup = false
+vim.opt.pumheight = 10
+vim.opt.spelllang = { 'en', 'es', 'cjk' } -- Establecer idiomas en ese orden
 vim.opt.spellsuggest = 'best,9' -- Muestra las 9 mejores opciones de correccion.
 vim.opt.spelloptions = 'camel' -- Para que no muestre error ortografico en los CamelCase
-vim.opt.inccommand   = 'split' -- Muertra en un split como se reemplazan las palabras.
+vim.opt.inccommand = 'split' -- Muertra en un split como se reemplazan las palabras.
 
 g.mapleader = ' '
 
