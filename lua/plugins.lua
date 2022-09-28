@@ -10,33 +10,33 @@ end
 return require('packer').startup({
    function(use)
       -- (1) Packer plugin manager
-      use('wbthomason/packer.nvim')
+      use {'wbthomason/packer.nvim'}
       -- +--------------------------------------------------------------------+
       -- (2) Necesarios para cargar primero
-      use({ 'lewis6991/impatient.nvim' })
-      use({ 'nvim-lua/plenary.nvim' })
-      use({ 'nvim-lua/popup.nvim' })
-      use({
+      use { 'lewis6991/impatient.nvim' }
+      use { 'nvim-lua/plenary.nvim' }
+      use { 'nvim-lua/popup.nvim' }
+      use {
          'kyazdani42/nvim-web-devicons',
          config = function()
             require('configs.devicons')
          end,
-      })
-      use({ -- Para la portada Inicial con las Opciones
+      }
+      use { -- Para la portada Inicial con las Opciones
          'goolord/alpha-nvim',
          config = function()
             require('configs.alpha')
          end,
-      })
+      }
       -- +--------------------------------------------------------------------+
       -- (4) Treesitter
-      use({
+      use {
          'nvim-treesitter/nvim-treesitter',
          config = function()
             require('configs.treesitter')
          end,
-      })
-      use({ 'nvim-treesitter/playground' })
+      }
+      use { 'nvim-treesitter/playground' }
       -- use {
       --    'nvim-treesitter/nvim-treesitter-textobjects',
       --    after = 'nvim-treesitter'
@@ -45,68 +45,68 @@ return require('packer').startup({
       --    'RRethy/nvim-treesitter-textsubjects',
       --    after = 'nvim-treesitter'
       -- }
-      use({ -- para resaltar los parametros de las funciones como en treesitter
+      use { -- para resaltar los parametros de las funciones como en treesitter
          'm-demare/hlargs.nvim',
          config = function()
             require('hlargs').setup()
          end,
-      })
+      }
       -- +--------------------------------------------------------------------+
       -- (5) Navigating (Telescope/Tree/Refactor)
-      use({
+      use {
          'nvim-telescope/telescope.nvim',
          config = function()
             require('configs.telescope')
          end,
-      })
-      use({
+      }
+      use {
          'kyazdani42/nvim-tree.lua',
          config = function()
             require('configs.tree')
          end,
-      })
+      }
       -- use { 'gbprod/stay-in-place.nvim',
       --    config = function() require('stay-in-place').setup() end
       -- }
       -- +--------------------------------------------------------------------+
       -- (6) LSP Base
-      use({ 'williamboman/mason.nvim' })
-      use({ 'williamboman/mason-lspconfig.nvim' })
-      use({
+      use { 'williamboman/mason.nvim' }
+      use { 'williamboman/mason-lspconfig.nvim' }
+      use {
          'neovim/nvim-lspconfig',
          config = function()
             require('lsp')
          end,
-      })
+      }
 
       -- +--------------------------------------------------------------------+
       -- (7) LSP Cmp
-      use({
+      use {
          'rafamadriz/friendly-snippets',
          module = { 'cmp', 'cmp_nvim_lsp' },
          event = 'InsertEnter',
-      })
-      use({
+      }
+      use {
          'hrsh7th/nvim-cmp',
          after = 'friendly-snippets',
          config = function()
             require('configs.cmp_conf')
          end,
-      })
-      use({
+      }
+      use {
          'L3MON4D3/LuaSnip',
          wants = 'friendly-snippets',
          after = 'nvim-cmp',
          config = function()
             require('configs.others').luasnip()
          end,
-      })
-      use({ 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' })
-      use({ 'hrsh7th/cmp-nvim-lua', after = 'cmp_luasnip' })
-      use({ 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' })
-      use({ 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' })
-      use({ 'hrsh7th/cmp-path', after = 'cmp-buffer' })
-      use({ 'f3fora/cmp-spell', after = 'cmp-path' })
+      }
+      use { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' }
+      use { 'hrsh7th/cmp-nvim-lua', after = 'cmp_luasnip' }
+      use { 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' }
+      use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
+      use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
+      use { 'f3fora/cmp-spell', after = 'cmp-path' }
       -- +--------------------------------------------------------------------+
       -- (8) LSP Addons
       -- use {
@@ -114,32 +114,36 @@ return require('packer').startup({
       --    requires = { 'MunifTanjim/nui.nvim' },
       --    config = function() require('plugins.dressing') end
       -- }
-      use({ 'jose-elias-alvarez/null-ls.nvim' })
-      use({ 'jose-elias-alvarez/typescript.nvim' })
+      use {
+         'jose-elias-alvarez/null-ls.nvim',
+         after = 'nvim-lspconfig',
+         config = function () require('lsp.null-ls') end
+      }
+      use { 'jose-elias-alvarez/typescript.nvim' }
       -- +--------------------------------------------------------------------+
       -- (9) Buffer and Bar state
-      use({ -- Buffer
+      use { -- Buffer
          'romgrk/barbar.nvim',
          config = function()
             require('configs.barbar')
          end,
-      })
-      use({
+      }
+      use {
          'ecosse3/galaxyline.nvim',
          event = 'BufWinEnter',
          config = function()
             require('configs.galaxyline')
          end,
-      })
+      }
       -- +--------------------------------------------------------------------+
       -- (10) General
-      use({
+      use {
          'numToStr/Comment.nvim',
          config = function()
             require('Comment').setup()
          end,
          -- config = function() require('plugins.comment') end
-      })
+      }
       -- use {
       --    'LudoPinelli/comment-box.nvim',
       --    config = function() require('plugins.comment_box') end
@@ -157,22 +161,22 @@ return require('packer').startup({
 
       -- use { 'mg979/vim-visual-multi' }
       -- use { 'junegunn/vim-easy-align' } -- Para ordenar por caracteres como =
-      use({ 'ggandor/lightspeed.nvim' }) -- Para buscar palabras.
-      use({ 'antoinemadec/FixCursorHold.nvim' }) -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
+      use { 'ggandor/lightspeed.nvim' } -- Para buscar palabras.
+      use { 'antoinemadec/FixCursorHold.nvim' } -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
 
       -- use { -- ver, instalar, eliminar... es Brujeria
       --    'vuki656/package-info.nvim',
       --    event = 'BufEnter package.json',
       --    config = function() require('plugins.package-info') end
       -- }
-      use({
+      use {
          'iamcco/markdown-preview.nvim',
          run = 'cd app && npm install',
          setup = function()
             vim.g.mkdp_filetypes = { 'markdown' }
          end,
          ft = { 'markdown' },
-      })
+      }
       -- use {
       --    'declancm/cinnamon.nvim',
       --    config = function() require('plugins.cinnamon') end
@@ -193,44 +197,42 @@ return require('packer').startup({
       -- use { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup() end }
       -- +--------------------------------------------------------------------+
       -- (11) Snippets & Language & Syntax
-      use({
+      use {
          'windwp/nvim-autopairs',
          after = { 'nvim-treesitter', 'nvim-cmp' },
-         config = function()
-            require('nvim-autopairs').setup({})
-         end,
+         config = function() require('nvim-autopairs').setup() end,
          -- config = function() require('plugins.autopairs') end
-      })
+      }
       -- use {
       --    'windwp/nvim-ts-autotag',
       --    config = function() require('nvim-ts-autotag').setup() end
       -- }
-      use({ 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } })
-      use({
+      use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+      use {
          'lukas-reineke/indent-blankline.nvim',
          config = function()
             require('configs.indent')
          end,
-      })
-      use({
+      }
+      use {
          'NvChad/nvim-colorizer.lua',
          config = function()
             require('configs.colorizer')
          end,
          after = 'nvim-treesitter',
-      })
-      use({ 'KabbAmine/vCoolor.vim' })
-      use({ 'mrshmllow/document-color.nvim' })
-      use({ 'potamides/pantran.nvim' }) -- traductor
+      }
+      use { 'KabbAmine/vCoolor.vim' }
+      use { 'mrshmllow/document-color.nvim' }
+      use { 'potamides/pantran.nvim' } -- traductor
       -- +--------------------------------------------------------------------+
       -- (12) Git
-      use({
+      use {
          'lewis6991/gitsigns.nvim',
          config = function()
             require('gitsigns').setup()
          end,
          event = 'BufRead',
-      })
+      }
       -- use {
       --    'sindrets/diffview.nvim',
       --    requires = 'nvim-lua/plenary.nvim',

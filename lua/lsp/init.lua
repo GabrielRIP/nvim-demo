@@ -13,8 +13,6 @@ local on_attach = require('lsp.util').on_attach
 local capabilities = require('lsp.util').capabilities
 local handlers = require('lsp.util').handlers
 
-require('lsp.null-ls')
-
 -- Config lsp servers
 if typescript_ok then
    typescript.setup({
